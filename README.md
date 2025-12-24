@@ -19,7 +19,7 @@ $$
 
 where:
 - $\vec{v}$ is the particle velocity  
-- $\vec{E}$ and $ \vec{B}$ are externally prescribed electric and magnetic fields  
+- $\vec{E}$ and $\vec{B}$ are externally prescribed electric and magnetic fields  
 - $e$ is the particle charge  
 - $m$ is the particle mass  
 - $c$ is the speed of light  
