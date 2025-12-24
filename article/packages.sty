@@ -1,0 +1,68 @@
+% Starting date: 24-12-2025
+% Ending date: ..-..-2026
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               NAMING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Particelle Cariche in un Campo Elettromagnetico}
+\author{Cembalo Gabriele}
+\date{\today}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{anysize}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{physics}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             FORMATTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{Blue}{rgb}{0.2,0.2,0.9}
+\definecolor{Green}{rgb}{0,0.6,0}
+\definecolor{Gray}{rgb}{0.5,0.5,0.5}
+\definecolor{Purple}{rgb}{0.58,0,0.82}
+\definecolor{background}{rgb}{0.98,0.98,0.95}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{background},   
+    commentstyle=\color{Green},
+    keywordstyle=\color{Blue},
+    numberstyle=\tiny\color{Gray},
+    stringstyle=\color{Purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            NEW COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\tens}[1]{\mathsf{#1}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2} }
+\newcommand{\HALF}{\frac{1}{2}}
+\newcommand{\DS}{\displaystyle}
