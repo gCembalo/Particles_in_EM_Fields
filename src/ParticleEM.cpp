@@ -1,7 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
-//              Name: Gabriele Cembalo                                        //
-//              a.a. : 2025-2026                                              //
-//              Project: Particle(s) in Electromagnetic Fields                //
+//              Name    : Gabriele Cembalo                                    //
+//              a.a.    : 2025-2026                                           //
+//              Project : Particle(s) in Electromagnetic Fields               //
+//                                                                            //
+//              Starting date: 24-12-2025                                     //
+//              Ending date:   ..-..-2026                                     //
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>

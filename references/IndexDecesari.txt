@@ -1,0 +1,17 @@
+Indice Article S. Decesari
+
+1. Introduzione
+
+2. Teoria
+
+3. Metodi numerici utilizzati
+
+4. Risultati
+    4.1 Semplice rotazione
+    4.2 Campo elettrico e campo magnetico paralleli
+    4.3 Campo elettrico e campo magnetico perpendicolari
+    4.4 Configurazione a X point
+
+5. Conclusioni
+
+6. Inserting Code

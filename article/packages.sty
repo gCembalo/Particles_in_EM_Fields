@@ -1,12 +1,10 @@
-% Starting date: 24-12-2025
-% Ending date: ..-..-2026
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                               NAMING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Particelle Cariche in un Campo Elettromagnetico}
-\author{Cembalo Gabriele}
+%\author{Gabriele Cembalo \small{\mail{gabriele.cembalo@edu.unito.it}}}
+\author{Gabriele Cembalo}
 \date{\today}
 
 
@@ -15,6 +13,7 @@
 %                               PACKAGES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[italian]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{anysize}
@@ -22,6 +21,12 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{physics}
+
+%\usepackage{hyperref}
+% When you want to print the document you can remove the comment from the
+% following commant to hide all the link, but you have to remember to
+% comment the "hypersetup"
+\usepackage[hidelinks]{hyperref}
 
 
 
@@ -54,6 +59,16 @@
     tabsize=2
 }
 \lstset{style=mystyle}
+
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}} % href to mail
+
+% The command "\hypersetup" is necessary to modify the color of the different
+% element of the document
+%\hypersetup{colorlinks = true,
+%            linkcolor=blue,
+%            filecolor=magenta,
+%            urlcolor=cyan,
+%            citecolor=Green}
 
 
 

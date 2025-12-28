@@ -10,6 +10,19 @@ The project is developed in the context of computational physics / astrophysics 
 
 ---
 
+## Project Structure
+```text
+.
+├── article/        # Article (.tex) file
+├── data/           # Output data
+├── figures/        # Generated plots and figures
+├── references/     # References for the project
+├── src/            # Source code
+└── README.md
+```
+
+---
+
 ## Physical Model
 The equation of motion for each particle is:
 
@@ -50,14 +63,3 @@ The project involves the numerical integration of the equations of motion using:
 - Visualization of particle motion and velocity magnitude
 - Comparison between different numerical integrators
 - Analysis of numerical stability and energy conservation
-
----
-
-## Project Structure
-```text
-.
-├── src/            # Source code
-├── notebooks/      # (Optional) Analysis and visualization notebooks
-├── data/           # (Optional) Output data
-├── figures/        # Generated plots and figures
-└── README.md
