@@ -35,7 +35,11 @@ In questo progetto si studia il moto di una o più particelle cariche, non relat
 \section{Teoria\label{sctn:teoria}}
 \section{Metodi numerici\label{sctn:metodi numerici}}
 
+\subsection{Metodi numerici utilizzati}
 
+I metodi numerici utilizzati in questo progetto sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris. \\
+
+Il metodo di Runge-Kutta del quart'ordine è un metodo iterativo, a singolo passo, utilizza solo l'informazione sull'intervallo corrente e non sui precedenti. Tale metodo si basa sull'espansione di Taylor, sull'approssimazione dell'integrale con la regola di Simpson ed è un buon algoritmo in termini di accuratezza e stabilità; infatti ha un'accuratezza locale dell'ordine $\mathcal{O}(\Delta t^5)$. Il metodo si basa su un metodo iterativo che richiede 4 valutazioni della \textit{Right-Hand-Side function}:
 \begin{align}
     k_1 &= R\left(t_n, Y_n\right) \notag \\
     k_2 &= R\left(t_n + \frac{\Delta t}{2}, Y_n + \frac{\Delta t}{2}k_1\right) \notag \\
@@ -43,6 +47,11 @@ In questo progetto si studia il moto di una o più particelle cariche, non relat
     k_4 &= R\left(t_n + \Delta t, Y_n + \Delta t\, k_3\right) \notag \\
     Y_{n+1} &= Y_n + \frac{\Delta t}{6}\left( k_1 + 2k_2 + 2k_3 + k_4 \right). \notag
 \end{align}
+Le quattro valutazioni vengono fatte in punti diversi dell'intervallo di discretizzazione. La prima e l'ultima valutazione vengono fatte rispettivamente nel punto iniziale e finale della discretizzazione temporale, mentre il secondo e terzo step iterativo vengono calcolati utilizzando il punto medio.
+
+
+
+
 
 \begin{align}
     x_{n+\frac{1}{2}} &= x_n + \frac{\Delta t}{2}v_n \notag \\

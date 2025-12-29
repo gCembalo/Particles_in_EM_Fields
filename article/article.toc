@@ -1,8 +1,9 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
 \contentsline {section}{\numberline {1}Introduzione}{1}{section.1}%
-\contentsline {section}{\numberline {2}Teoria}{2}{section.2}%
-\contentsline {section}{\numberline {3}Metodi numerici}{2}{section.3}%
+\contentsline {section}{\numberline {2}Teoria}{1}{section.2}%
+\contentsline {section}{\numberline {3}Metodi numerici}{1}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Metodi numerici utilizzati}{1}{subsection.3.1}%
 \contentsline {section}{\numberline {4}Risultati nelle diverse configurazioni}{2}{section.4}%
 \contentsline {section}{\numberline {5}Conclusioni}{2}{section.5}%
 \contentsline {section}{\numberline {A}Inserting Code}{3}{appendix.Alph1}%
