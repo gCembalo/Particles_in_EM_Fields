@@ -9,35 +9,85 @@
 \tableofcontents
 \vspace{0.5cm}\hrule\vspace{0.5cm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            Something to remember                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                             %
+% Please remember that smaller figures will require larger fonts in order     %
+% to be readable.                                                             %
+%                                                                             %
+% The command \texttt{texttt} allows you to write in a coding-format.         %
+%                                                                             %
+% Command \texttt{clearpage} ends the current page and causes all figures     %
+% and tables that have so far appeared in the input to be printed.            %
+%                                                                             %
+% When you want import something in a different folder you have to use        %
+% \texttt{../src/example.cpp}.                                                %
+%                                                                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Something to remember}
 
-Please remember that smaller figures will require larger fonts in order to be readable.
+\section{Introduzione}
 
-The command \texttt{texttt} allows you to write in a coding-format.
+In questo progetto si studia il moto di una o più particelle cariche, non relativistiche, immerse in un campo elettromagnetico costante. Vengono analizzate diverse configurazioni di campo. Nella sezione \ref{sctn:teoria} analizzeremo la teoria alla base del problema. Nella sezione \ref{sctn:metodi numerici} vengono spiegate meglio le motivazioni per cui un approccio numerico è necessario/preferibile rispetto uno analitico; inoltre vengono analizzati i due metodi di risoluzione dell'equazione differenziale proposti, ovvero il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris del secondo ordine. Studiamo le diverse configurazioni di campo elettromagnetico e i diversi risultati nella sezione \ref{sctn:risultati}. In particolare, considerando una particella singola, trattiamo le configurazioni: campo magnetico costante e campo elettrico nullo; campo elettrico e magnetico costanti e paralleli; campo elettrico e magnetico perpendicolari. Nell'ultimo caso proposto vengono studiate più particelle in una configurazione ad $X$ point. Per concludere, nella sezione \ref{sctn:conclusioni} traiamo le conclusioni. È presente nell'appendice \ref{sctn:codice} il codice utilizzato.
 
-Command \texttt{clearpage} ends the current page and causes all figures and tables that have so far appeared in the input to be printed.
 
-When you want import something in a different folder you have to use \texttt{../src/example.cpp} . To report the output of the code, use can use the \texttt{verbatim} environment. But, if you want insert code use the \texttt{lstlisting} environment included with the \texttt{listing} package included at the beginning of this document. An example is in the template. For instance:
-\begin{verbatim}
-  \begin{lstlisting}[language=C++]
-      double i;
-      for (i = ... ){
-         ...
-      }
-      return;
-  \end{lstlisting}
+\section{Teoria\label{sctn:teoria}}
+\section{Metodi numerici\label{sctn:metodi numerici}}
 
-\end{verbatim}
 
-If your code is long or you need to include more than one file, then a more efficient strategy is to use the \texttt{\textbackslash lstinputlisting[language=C++]\{fname.cpp\}} command. This is show in the section:
+\begin{align}
+    k_1 &= R\left(t_n, Y_n\right) \notag \\
+    k_2 &= R\left(t_n + \frac{\Delta t}{2}, Y_n + \frac{\Delta t}{2}k_1\right) \notag \\
+    k_3 &= R\left(t_n + \frac{\Delta t}{2}, Y_n + \frac{\Delta t}{2}k_2\right) \\
+    k_4 &= R\left(t_n + \Delta t, Y_n + \Delta t\, k_3\right) \notag \\
+    Y_{n+1} &= Y_n + \frac{\Delta t}{6}\left( k_1 + 2k_2 + 2k_3 + k_4 \right). \notag
+\end{align}
+
+\begin{align}
+    x_{n+\frac{1}{2}} &= x_n + \frac{\Delta t}{2}v_n \notag \\
+    v_- &= v_n + \frac{\Delta t}{2}E_{n+\frac{1}{2}} \notag \\
+    v_+ &= v_- + 2\frac{ v_- + v_-\wedge \frac{\Delta t}{2}B_n }{ 1 + \frac{\Delta t^2}{4}B_n^2 } \\
+    v_{n+1} &= v_+ + \frac{\Delta t}{2}E_{n+\frac{1}{2}} \notag \\
+    x_{n+1} &= x_{n+\frac{1}{2}} + \frac{\Delta t}{2}v_{n+1}. \notag
+\end{align}
+
+
+
+
+\section{Risultati nelle diverse configurazioni\label{sctn:risultati}}
+\section{Conclusioni\label{sctn:conclusioni}}
 
 
 \newpage
 \appendix
-\section{Inserting Code}
-%\section{\texttt{ParticleEM.cpp}}
+\section{Inserting Code\label{sctn:codice}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                  Some tips                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                             %
+% To report the output of the code, use can use the \texttt{verbatim}         %
+% environment. But, if you want insert code use the \texttt{lstlisting}       %
+% environment included with the \texttt{listing} package included at the      %
+% beginning of this document. An example is in the template. For instance:    %
+% \begin{verbatim}                                                            %
+%   \begin{lstlisting}[language=C++]                                          %
+%       double i;                                                             %
+%       for (i = ... ){                                                       %
+%          ...                                                                %
+%       }                                                                     %
+%       return;                                                               %
+%   \end{lstlisting}                                                          %
+% \end{verbatim}                                                              %
+%                                                                             %
+% If your code is long or you need to include more than one file,             %
+% then a more efficient strategy is to use the                                %
+% \texttt{\textbackslash lstinputlisting[language=C++]\{fname.cpp\}} command. %
+%                                                                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \lstinputlisting[language=C++]{../src/ParticleEM.cpp}
 
-\end{document}
 
+\end{document}
