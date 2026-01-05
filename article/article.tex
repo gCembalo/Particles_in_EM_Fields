@@ -1,13 +1,24 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage{packages} % Importing all the packages
 
+\usepackage{blindtext} % To delete in the final draft
+
 \begin{document}
 
 \maketitle
 
-\hrule
+\begin{center}
+    \section*{Abstract}
+\end{center}
+
+\begin{adjustwidth}{1.7cm}{1.7cm}
+    In questa esperienza ci si è occupati dello studio dell'effetto Hall. Prima di effettuare qualsiasi misura, è stato verificato che il campo magnetico generato nel traferro del magnete utilizzato fosse qualitativamente omogeneo entro una regione della sezione del magnete. Successivamente, è stata variata la corrente circolante nelle bobine per caratterizzare due cicli di isteresi completi. Dalla forma di tale ciclo è stato dedotto che il magnete fosse dolce, mentre dalle rispettive salite e discese di queste curve sono stati estrapolati i parametri della retta $B(i)$, divenuta calibrazione del set-up. In seguito, ci si è occupati del calcolo dei coefficienti di Hall di un campione di Germanio, ottenuti prima a campo magnetico costante e poi a corrente costante ed essi sono risultati compatibili. Per farlo è stato considerato anche un fondo di tensione, di natura ohmica, dovuta al disallineamento dei contatti nel semiconduttore. Per concludere, conoscendo ora il coefficiente di Hall del Germanio, è stata ricavata la mobilità dei portatori avendo prima misurato la resistenza del campione.
+\end{adjustwidth}
+
+\vspace{0.5cm}\hrule
 \tableofcontents
 \vspace{0.5cm}\hrule\vspace{0.5cm}
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                            Something to remember                            %
@@ -33,13 +44,18 @@ In questo progetto si studia il moto di una o più particelle cariche, non relat
 
 
 \section{Teoria\label{sctn:teoria}}
-\section{Metodi numerici\label{sctn:metodi numerici}}
+\section{Metodi numerici utilizzati\label{sctn:metodi numerici}}
 
-\subsection{Metodi numerici utilizzati}
+I metodi numerici utilizzati in questo progetto sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris.
 
-I metodi numerici utilizzati in questo progetto sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris. \\
 
-Il metodo di Runge-Kutta del quart'ordine è un metodo iterativo, a singolo passo, utilizza solo l'informazione sull'intervallo corrente e non sui precedenti. Tale metodo si basa sull'espansione di Taylor, sull'approssimazione dell'integrale con la regola di Simpson ed è un buon algoritmo in termini di accuratezza e stabilità; infatti ha un'accuratezza locale dell'ordine $\mathcal{O}(\Delta t^5)$. Il metodo si basa su un metodo iterativo che richiede 4 valutazioni della \textit{Right-Hand-Side function}:
+\subsection{Metodo Runge-Kutta del quart'ordine}
+
+Il \textbf{metodo di Runge-Kutta del quart'ordine} viene utilizzato per la risoluzione numerica di problemi ai valori iniziali del tipo:
+\begin{equation}
+    \dv{Y}{t} = R(t,Y) \qquad , \qquad Y(t_0) = Y_0.
+\end{equation}
+Tale metodo è un metodo iterativo, a singolo passo, che utilizza solo l'informazione sull'intervallo corrente e non sui precedenti. Tale metodo si basa sull'espansione di Taylor, sull'approssimazione dell'integrale con la regola di Simpson ed è un buon algoritmo in termini di accuratezza e stabilità; infatti ha un'accuratezza locale dell'ordine $\mathcal{O}(\Delta t^5)$, che si traduce in un errore globale dell'ordine $\mathcal{O}(\Delta t^4)$. Il metodo richiede quattro valutazioni della \textit{Right-Hand-Side function} per ogni passo temporale:
 \begin{align}
     k_1 &= R\left(t_n, Y_n\right) \notag \\
     k_2 &= R\left(t_n + \frac{\Delta t}{2}, Y_n + \frac{\Delta t}{2}k_1\right) \notag \\
@@ -47,20 +63,37 @@ Il metodo di Runge-Kutta del quart'ordine è un metodo iterativo, a singolo pass
     k_4 &= R\left(t_n + \Delta t, Y_n + \Delta t\, k_3\right) \notag \\
     Y_{n+1} &= Y_n + \frac{\Delta t}{6}\left( k_1 + 2k_2 + 2k_3 + k_4 \right). \notag
 \end{align}
-Le quattro valutazioni vengono fatte in punti diversi dell'intervallo di discretizzazione. La prima e l'ultima valutazione vengono fatte rispettivamente nel punto iniziale e finale della discretizzazione temporale, mentre il secondo e terzo step iterativo vengono calcolati utilizzando il punto medio.
+Le quattro valutazioni della funzione $R$ vengono effettuate in punti diversi dell'intervallo di discretizzazione temporale. In particolare, $k_1$ e $k_4$ corrispondono rispettivamente agli estremi iniziale e finale dell'intervallo, mentre $k_2$ e $k_3$ sono calcolati nel punto medio, fornendo una stima più accurata dell'andamento della soluzione.
+
+La combinazione pesata dei coefficienti $k_i$ deriva dall'approssimazione dell'integrale mediante la regola di Simpson e consente di ottenere un'elevata accuratezza senza aumentare il numero di passi temporali.
 
 
+\subsection{Metodo Boris}
 
+Il secondo metodo utilizzato è il \textbf{metodo di Boris}, che è un integratore simplettico e un'estensione dell'algoritmo Position-Verlet. Questo metodo viene utilizzato per la risoluzione numerica del problema ai valori iniziali associato alle equazioni del moto di una particella carica soggetta a campi elettromagnetici, ovvero a problemi in cui la forza dipende dalla velocità, come nel caso descritto dal sistema:
+\begin{equation}
+    \begin{cases}
+        \displaystyle \dv{\mathbf{x}}{t} = \mathbf{v} \\
+        \displaystyle \dv{\mathbf{v}}{t} = \frac{q}{m} \Big( \mathbf{E} + \mathbf{v} \times \mathbf{B} \Big)
+    \end{cases}
+    \qquad , \qquad
+    \mathbf{x}(t_0)=\mathbf{x}_0,\quad \mathbf{v}(t_0)=\mathbf{v}_0
+\end{equation}
+in cui $\mathbf{E}$ e $\mathbf{B}$ indicano rispettivamente il campo elettrico e magnetico valutati nella posizione della particella. Il metodo di Boris è un metodo iterativo, esplicito e a singolo passo, che utilizza esclusivamente le informazioni relative all'intervallo temporale corrente e non sui passi precedenti. A differenza dei metodi di tipo Runge-Kutta, esso non si basa su un'espansione di Taylor né su una quadratura diretta dell'integrale, ma su una scomposizione simmetrica dell'operatore di avanzamento temporale, che separa l'azione del campo elettrico da quella del campo magnetico.
 
+Il metodo è di secondo ordine in accuratezza globale, con errore locale dell'ordine $\mathcal{O}(\Delta t^3)$, ed è particolarmente apprezzato per le sue proprietà di stabilità e per la capacità di preservare le invarianti fisiche del sistema. In particolare, in assenza di campo elettrico, il metodo conserva l'energia cinetica della particella, riproducendo correttamente il moto di rotazione indotto dal campo magnetico.
 
+L'aggiornamento della velocità viene effettuato attraverso una sequenza di tre sotto-passi, mentre la posizione viene aggiornata come:
 \begin{align}
-    x_{n+\frac{1}{2}} &= x_n + \frac{\Delta t}{2}v_n \notag \\
-    v_- &= v_n + \frac{\Delta t}{2}E_{n+\frac{1}{2}} \notag \\
-    v_+ &= v_- + 2\frac{ v_- + v_-\wedge \frac{\Delta t}{2}B_n }{ 1 + \frac{\Delta t^2}{4}B_n^2 } \\
-    v_{n+1} &= v_+ + \frac{\Delta t}{2}E_{n+\frac{1}{2}} \notag \\
-    x_{n+1} &= x_{n+\frac{1}{2}} + \frac{\Delta t}{2}v_{n+1}. \notag
+    \mathbf{x}_{n+\frac{1}{2}} &= \mathbf{x}_n + \frac{\Delta t}{2}\mathbf{v}_n \notag \\
+    \mathbf{v}_- &= \mathbf{v}_n + \frac{\Delta t}{2}\mathbf{E}_{n+\frac{1}{2}} \notag \\
+    \mathbf{v}_+ &= \mathbf{v}_- + 2\frac{ \mathbf{v}_- + \mathbf{v}_- \cross \frac{\Delta t}{2}\mathbf{B}_n }{ 1 + \frac{\Delta t^2}{4}\mathbf{B}_n^2 } \\
+    \mathbf{v}_{n+1} &= \mathbf{v}_+ + \frac{\Delta t}{2}\mathbf{E}_{n+\frac{1}{2}} \notag \\
+    \mathbf{x}_{n+1} &= \mathbf{x}_{n+\frac{1}{2}} + \frac{\Delta t}{2}\mathbf{v}_{n+1}. \notag
 \end{align}
+Gli aggiornamenti intermedi della velocità vengono effettuati in punti diversi dell'intervallo di discretizzazione temporale. In particolare, i termini $\mathbf{v}_-$ e $\mathbf{v}_{n+1}$ rappresentano gli effetti del campo elettrico applicati rispettivamente all'inizio e alla fine del passo temporale, mentre l'aggiornamento centrale $\mathbf{v}_+$ descrive l'azione del campo magnetico, trattata come una rotazione nel punto medio dell'intervallo. 
 
+La struttura simmetrica del metodo consente una buona conservazione delle invarianti fisiche del sistema, in particolare dell'energia cinetica in assenza di campo elettrico, garantendo stabilità numerica anche per integrazioni di lungo termine.
 
 
 
