@@ -38,7 +38,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.particleincell.com/2011/vxb-rotation/}}
-      \field{note}{Accessed: 2026-01-05}
       \field{title}{The Boris Method: \textbf{v} $\times$ \textbf{B} Rotation}
       \field{year}{2011}
     \endentry
@@ -87,6 +86,7 @@
       \field{sortinithash}{ce69a400a872ddd02ee7fdb3b38c6abd}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://digital.library.unt.edu/ark:/67531/metadc843445/m2/1/high_res_d/1090047.pdf}}
       \field{journaltitle}{Physics of Plasmas}
       \field{number}{8}
       \field{title}{Why is Boris algorithm so good?}

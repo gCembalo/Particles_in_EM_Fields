@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber article"] 1767604981.67511 "article.bcf" "article.bbl" "article" 1767605011.1347 0
-  "Bibliography.bib" 1767604974.58367 632 9f42a9ffdc8bcbd31ed21c8a58b5c336 ""
-  "article.bcf" 1767605011.01069 108624 a5dbe79e74ef42f40785169dff07e061 "pdflatex"
+["biber article"] 1767605188.39669 "article.bcf" "article.bbl" "article" 1767605241.17455 0
+  "Bibliography.bib" 1767605186.0438 701 10cdb5f52677eda9ab6cbcae96143594 ""
+  "article.bcf" 1767605241.05239 108624 a5dbe79e74ef42f40785169dff07e061 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1767605009.23224 "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" "article.pdf" "article" 1767605011.1351 0
+["pdflatex"] 1767605239.31592 "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" "article.pdf" "article" 1767605241.17517 0
   "../src/ParticleEM.cpp" 1767032911.52544 9249 a0137d9aa23fa9db2566f1a67038e8e5 ""
-  "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" 1767605008.95811 11729 da1e1137dd7886d50b3a94af0b1a42b5 ""
+  "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" 1767605239.04543 11852 428c2eb9777d4888f5a29cb68cba3857 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -152,12 +152,12 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1743493427 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1743493289 3345731 1b54ae79c33d7c2bf6de57c6693051df ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "article.aux" 1767605011.00595 2205 7abea0b4075565897ae565b287321f9e "pdflatex"
-  "article.bbl" 1767604983.91755 3833 af2cd85877d77e123d6a8922ba59dc9f "biber article"
-  "article.out" 1767605011.00922 1281 1a52f89d73a86072dbf471c17da17154 "pdflatex"
-  "article.run.xml" 1767605011.01172 2328 f7582eb893c57784faecb3cc7b311259 "pdflatex"
-  "article.tex" 1767605008.95811 11729 da1e1137dd7886d50b3a94af0b1a42b5 ""
-  "article.toc" 1767605011.01182 741 b7b98bd7c6e1cc00d85297169281ed04 "pdflatex"
+  "article.aux" 1767605241.04775 2205 38d8722527ff67b2896c329adf55d6d9 "pdflatex"
+  "article.bbl" 1767605191.43564 3910 ce44e7071ec3fddd66a7f09b12730b04 "biber article"
+  "article.out" 1767605241.05095 1281 1a52f89d73a86072dbf471c17da17154 "pdflatex"
+  "article.run.xml" 1767605241.05334 2328 f7582eb893c57784faecb3cc7b311259 "pdflatex"
+  "article.tex" 1767605239.04543 11852 428c2eb9777d4888f5a29cb68cba3857 ""
+  "article.toc" 1767605241.05344 741 b7b98bd7c6e1cc00d85297169281ed04 "pdflatex"
   "packages.sty" 1767605007.17153 2946 c0e7886edd947db23ecf097c540b1123 ""
   (generated)
   "article.aux"
