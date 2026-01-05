@@ -25,6 +25,7 @@ using namespace std;
 #define N_Part 1.e3 // Number of particles in the multi-particle problem
 #define X_L 1000 // Length of the X axis for STAGE 4
 #define Y_L 1000 // Length of the Y axis for STAGE 4
+#define TL 100.0 // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //
@@ -35,6 +36,7 @@ void RHSFunc(double, double *, double *, double *);
 void RK4Step(double, double *, double *,
              void (*)(double, double *, double *, double *), 
              double, int);
+void BorisStep(double, double *, double *, double);
 
 ////////////////////////////////////////////////////////////////////////////////
 //                       Main function implementation                         //
@@ -54,6 +56,10 @@ int main(){
 
     double Y[neq]; // (x, y, z)    = (Y[0], Y[1], Y[2])
                    // (vx, vy, vz) = (Y[3], Y[4], Y[5])
+
+    double EB[neq]; // Electromagnetic field
+                    // (Ex, Ey, Ez) = (EB[0], EB[1], EB[2])
+                    // (Bx, By, Bz) = (EB[3], EB[4], EB[5])
 
     return 0;
 
@@ -192,7 +198,7 @@ void RK4Step(double t, double *Y, double *EB,
                                   // and Y_n + k1*h/2
     
     // Loop to compute Y_{n+1} = Y_n + k2*h/2
-    for (i = 0 ; i < neq ; i++){
+    for(i = 0 ; i < neq ; i++){
         
         Y1[i] = Y[i] + h*k2[i]*0.5;
 
@@ -202,7 +208,7 @@ void RK4Step(double t, double *Y, double *EB,
                                   // and Y_n + k2*h/2
     
     // Loop to compute Y_{n+1} = Y_n + k3*h
-    for (i = 0 ; i < neq ; i++){
+    for(i = 0 ; i < neq ; i++){
         
         Y1[i] = Y[i] + h*k3[i];
 
@@ -212,7 +218,7 @@ void RK4Step(double t, double *Y, double *EB,
                               // and Y_n + k3*h
     
     // Loop to compute Y_{n+1} = Y_n + h/6 * ( k1 + 2*k2 + 2*k3 + k4 )
-    for (i = 0 ; i < neq ; i++){
+    for(i = 0 ; i < neq ; i++){
         
         Y[i] += h * ( k1[i] + 2.0*k2[i] + 2.0*k3[i] + k4[i] ) / 6.0;
 
@@ -222,10 +228,87 @@ void RK4Step(double t, double *Y, double *EB,
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Boris particle pusher (second-order, symplectic).                          //
+// Boris Method Step (second-order, symplectic)                               //
 // Input: integration variable,                                               //
 //        pointer to the solution vector,                                     //
 //        pointer to the electric and magnetic field vector,                  //
-//        step size,                                                          //
-//        order of the ODE system (must be 6).                                //
+//        step size.                                                          //
 ////////////////////////////////////////////////////////////////////////////////
+void BorisStep(double t, double *Y, double *EB, double h){
+
+    // Reminder: (x, y, z)    = (Y[0], Y[1], Y[2])
+    //           (vx, vy, vz) = (Y[3], Y[4], Y[5])
+    //           (Ex, Ey, Ez) = (EB[0], EB[1], EB[2])
+    //           (Bx, By, Bz) = (EB[3], EB[4], EB[5])
+
+    // We'll compute the following step: 1. x_{n+1/2} = x_n + v_n * h/2
+    //                                   2. s and t
+    //                                   3. v_minus = v_n + E * h/2
+    //                                   4. v_prime and v_plus
+    //                                   5. v_{n+1} = v_plus + E * h/2
+    //                                   6. x_{n+1} = x_{n+1/2} + v_{n+1} * h/2
+    
+    int i; // Loop index
+    // Vectors for intermediate steps
+    double v_minus[3], v_plus[3], t_vec[3], s_vec[3], v_prime[3];
+    // Where: t_vec = B * h * 0.5
+    //        s_vec = 2t / ( 1 + |t|^2 )
+    //        v^prime = v_- + v_- cross t
+    double t_mag; // This is the magnitude ^2 of t_vec
+
+    // 1. Compute the position half-step: x_{n+1/2} = x_n + v_n * h/2
+    for( i = 0 ; i < 3 ; i++ ){
+
+        Y[i] = Y[i] + Y[i+3] * 0.5 * h;
+
+    }
+
+    // 2. Compute the intermediate vectors for the magnetic rotation
+    t_mag = 0;
+    for( i = 0 ; i < 3 ; i++ ){
+
+        t_vec[i] = EB[i+3] * 0.5 * h;
+        t_mag += t_vec[i] * t_vec[i];
+
+    }
+    for( i = 0 ; i < 3 ; i++ ){
+
+        s_vec[i] = 2.0 * t_vec[i] / (1.0 + t_mag);
+
+    }
+
+    // 3. Compute the velocity v_- step (electric field):
+    //    v_minus = v_n + E * h/2
+    for( i = 0 ; i < 3 ; i++ ){
+
+        v_minus[i] = Y[i+3] + EB[i] * 0.5 * h;
+
+    }
+
+    // 4. Magnetic rotation (Boris Trick)
+    //    v_prime = v_minus + v_minus cross t
+    v_prime[0] = v_minus[0] + (v_minus[1] * t_vec[2] - v_minus[2] * t_vec[1]);
+    v_prime[1] = v_minus[1] + (v_minus[2] * t_vec[0] - v_minus[0] * t_vec[2]);
+    v_prime[2] = v_minus[2] + (v_minus[0] * t_vec[1] - v_minus[1] * t_vec[0]);
+
+    // Compute: v_plus = v_minus + v_prime x s
+    v_plus[0] = v_minus[0] + (v_prime[1] * s_vec[2] - v_prime[2] * s_vec[1]);
+    v_plus[1] = v_minus[1] + (v_prime[2] * s_vec[0] - v_prime[0] * s_vec[2]);
+    v_plus[2] = v_minus[2] + (v_prime[0] * s_vec[1] - v_prime[1] * s_vec[0]);
+
+    // 5. Compute the second velocity step (electric field): 
+    //    v_{n+1} = v_plus + E * h/2
+    for( i = 0 ; i < 3 ; i++ ){
+
+        Y[i+3] = v_plus[i] + EB[i] * 0.5 * h;
+
+    }
+
+    // 6. Compute the position step: x_{n+1} = x_{n+1/2} + v_{n+1} * h/2
+    for( i = 0 ; i < 3 ; i++ ){
+
+        Y[i] = Y[i] + Y[i+3] * 0.5 * h;
+
+    }
+
+}

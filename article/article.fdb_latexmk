@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber article"] 1767605188.39669 "article.bcf" "article.bbl" "article" 1767605241.17455 0
+["biber article"] 1767636534.28711 "article.bcf" "article.bbl" "article" 1767638104.33271 0
   "Bibliography.bib" 1767605186.0438 701 10cdb5f52677eda9ab6cbcae96143594 ""
-  "article.bcf" 1767605241.05239 108624 a5dbe79e74ef42f40785169dff07e061 "pdflatex"
+  "article.bcf" 1767638104.21042 108689 f4b14daa95728c94572d13461a786b78 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1767605239.31592 "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" "article.pdf" "article" 1767605241.17517 0
-  "../src/ParticleEM.cpp" 1767032911.52544 9249 a0137d9aa23fa9db2566f1a67038e8e5 ""
-  "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" 1767605239.04543 11852 428c2eb9777d4888f5a29cb68cba3857 ""
+["pdflatex"] 1767638102.36601 "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" "article.pdf" "article" 1767638104.33316 0
+  "../src/ParticleEM.cpp" 1767638101.82375 11984 9d16a6c04a878d2c986fa03ae8c2a164 ""
+  "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" 1767637982.3445 12557 333ca27971f7f5171cf79cbb4ed4a7ee ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -54,7 +54,6 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -108,7 +107,6 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/blx-dm.def" 1711143581 32761 18d14e3b502c120f79b2184de4e21d14 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx" 1678141846 4629 cda468e8a0b1cfa0f61872e171037a4b ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/biblatex/lbx/italian.lbx" 1711143581 29926 203d303f637d27783ff8415f282c84a8 ""
-  "/usr/local/texlive/2025/texmf-dist/tex/latex/blindtext/blindtext.sty" 1325892463 47295 de48b7f8ebf4b54709a2f6b2c7106dd5 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/changepage/changepage.sty" 1256071977 4523 a9044e2dc40e764dac60d2acda7ae919 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/csquotes/csquotes.cfg" 1429144587 7068 06f8d141725d114847527a66439066b6 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/csquotes/csquotes.def" 1712263026 22135 0975a49eeaed232aa861e9425ffb2e7c ""
@@ -145,20 +143,19 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/physics/physics.sty" 1356048875 29610 a9597219b282d9c78b02393dcd7d4322 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657483315 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
-  "/usr/local/texlive/2025/texmf-dist/tex/latex/tools/xspace.sty" 1717359999 4545 e3f4de576c914e2000f07f69a891c071 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty" 1727642399 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1743493427 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1743493289 3345731 1b54ae79c33d7c2bf6de57c6693051df ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "article.aux" 1767605241.04775 2205 38d8722527ff67b2896c329adf55d6d9 "pdflatex"
-  "article.bbl" 1767605191.43564 3910 ce44e7071ec3fddd66a7f09b12730b04 "biber article"
-  "article.out" 1767605241.05095 1281 1a52f89d73a86072dbf471c17da17154 "pdflatex"
-  "article.run.xml" 1767605241.05334 2328 f7582eb893c57784faecb3cc7b311259 "pdflatex"
-  "article.tex" 1767605239.04543 11852 428c2eb9777d4888f5a29cb68cba3857 ""
-  "article.toc" 1767605241.05344 741 b7b98bd7c6e1cc00d85297169281ed04 "pdflatex"
-  "packages.sty" 1767605007.17153 2946 c0e7886edd947db23ecf097c540b1123 ""
+  "article.aux" 1767638104.20572 2266 f965b325e036daf309c864c093248945 "pdflatex"
+  "article.bbl" 1767636536.90918 3910 ce44e7071ec3fddd66a7f09b12730b04 "biber article"
+  "article.out" 1767638104.20897 1281 1a52f89d73a86072dbf471c17da17154 "pdflatex"
+  "article.run.xml" 1767638104.21139 2328 f7582eb893c57784faecb3cc7b311259 "pdflatex"
+  "article.tex" 1767637982.3445 12557 333ca27971f7f5171cf79cbb4ed4a7ee ""
+  "article.toc" 1767638104.21149 741 d8df8ae9b7338b3846f14c30a0bcdd24 "pdflatex"
+  "packages.sty" 1767627885.3012 2955 24e1ee60764a5b8cb7440449f3a4b176 ""
   (generated)
   "article.aux"
   "article.bcf"

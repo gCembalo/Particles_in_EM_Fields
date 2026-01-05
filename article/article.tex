@@ -1,12 +1,11 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage{packages} % Importing all the packages
 
-\usepackage{blindtext} % To delete in the final draft
-
 \begin{document}
 
 \maketitle
 
+\vfill
 \begin{center}
     \section*{Abstract}
 \end{center}
@@ -14,8 +13,10 @@
 \begin{adjustwidth}{1.7cm}{1.7cm}
     In questa esperienza ci si è occupati dello studio dell'effetto Hall. Prima di effettuare qualsiasi misura, è stato verificato che il campo magnetico generato nel traferro del magnete utilizzato fosse qualitativamente omogeneo entro una regione della sezione del magnete. Successivamente, è stata variata la corrente circolante nelle bobine per caratterizzare due cicli di isteresi completi. Dalla forma di tale ciclo è stato dedotto che il magnete fosse dolce, mentre dalle rispettive salite e discese di queste curve sono stati estrapolati i parametri della retta $B(i)$, divenuta calibrazione del set-up. In seguito, ci si è occupati del calcolo dei coefficienti di Hall di un campione di Germanio, ottenuti prima a campo magnetico costante e poi a corrente costante ed essi sono risultati compatibili. Per farlo è stato considerato anche un fondo di tensione, di natura ohmica, dovuta al disallineamento dei contatti nel semiconduttore. Per concludere, conoscendo ora il coefficiente di Hall del Germanio, è stata ricavata la mobilità dei portatori avendo prima misurato la resistenza del campione.
 \end{adjustwidth}
+\vfill
 
-\vspace{0.5cm}\hrule
+\vfill\hrule
+%\vspace{0.5cm}\hrule
 \tableofcontents
 \vspace{0.5cm}\hrule\vspace{0.5cm}
 \newpage
@@ -89,13 +90,22 @@ L'aggiornamento della velocità viene effettuato attraverso una sequenza di tre 
 \begin{align}
     \mathbf{x}_{n+\frac{1}{2}} &= \mathbf{x}_n + \frac{\Delta t}{2}\mathbf{v}_n \notag \\
     \mathbf{v}_- &= \mathbf{v}_n + \frac{\Delta t}{2}\mathbf{E}_{n+\frac{1}{2}} \notag \\
-    \mathbf{v}_+ &= \mathbf{v}_- + 2\frac{ \mathbf{v}_- + \mathbf{v}_- \cross \frac{\Delta t}{2}\mathbf{B}_n }{ 1 + \frac{\Delta t^2}{4}\mathbf{B}_n^2 } \\
+    \mathbf{v}_+ &= \mathbf{v}_- + 2\frac{ \mathbf{v}_- + \mathbf{v}_- \cross \frac{\Delta t}{2}\mathbf{B}_n }{ 1 + \frac{\Delta t^2}{4}\mathbf{B}_n^2 }\cross\left( \frac{\Delta t}{2}\mathbf{B}_n \right) \\
     \mathbf{v}_{n+1} &= \mathbf{v}_+ + \frac{\Delta t}{2}\mathbf{E}_{n+\frac{1}{2}} \notag \\
     \mathbf{x}_{n+1} &= \mathbf{x}_{n+\frac{1}{2}} + \frac{\Delta t}{2}\mathbf{v}_{n+1}. \notag
 \end{align}
 Gli aggiornamenti intermedi della velocità vengono effettuati in punti diversi dell'intervallo di discretizzazione temporale. In particolare, i termini $\mathbf{v}_-$ e $\mathbf{v}_{n+1}$ rappresentano gli effetti del campo elettrico applicati rispettivamente all'inizio e alla fine del passo temporale, mentre l'aggiornamento centrale $\mathbf{v}_+$ descrive l'azione del campo magnetico, trattata come una rotazione nel punto medio dell'intervallo. 
 
 La struttura simmetrica del metodo consente una buona conservazione delle invarianti fisiche del sistema, in particolare dell'energia cinetica in assenza di campo elettrico, garantendo stabilità numerica anche per integrazioni di lungo termine.
+
+\textbf{N.B.} Nell'implementazione dell'algoritmo nell'Appendice \ref{sctn:codice} viene utilizzata la notazione (e le quantità) di \cite{PICvxB2011}. Ci serviremo delle quantità:
+\begin{equation}
+    t = \frac{\Delta t}{2} \mathbf{B} \qquad , \qquad \mathbf{v}^\prime = \mathbf{v}_- + \mathbf{v}_- \cross \mathbf{t} \qquad , \qquad \mathbf{s} = \frac{2\mathbf{t}}{1+t^2}
+\end{equation}
+così viene comodo calcolare:
+\begin{equation}
+    \mathbf{v}_+ = \mathbf{v}_- + \mathbf{v}^\prime\cross\mathbf{s}.
+\end{equation}
 
 
 
@@ -128,6 +138,8 @@ La struttura simmetrica del metodo consente una buona conservazione delle invari
 % If your code is long or you need to include more than one file,             %
 % then a more efficient strategy is to use the                                %
 % \texttt{\textbackslash lstinputlisting[language=C++]\{fname.cpp\}} command. %
+% The output will be updated (in the .tex file) every time you save           %
+% your code file                                                              %
 %                                                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
