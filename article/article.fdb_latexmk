@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber article"] 1767636534.28711 "article.bcf" "article.bbl" "article" 1767638104.33271 0
+["biber article"] 1767636534.28711 "article.bcf" "article.bbl" "article" 1767656578.21729 0
   "Bibliography.bib" 1767605186.0438 701 10cdb5f52677eda9ab6cbcae96143594 ""
-  "article.bcf" 1767638104.21042 108689 f4b14daa95728c94572d13461a786b78 "pdflatex"
+  "article.bcf" 1767656578.10219 108689 f4b14daa95728c94572d13461a786b78 "pdflatex"
   (generated)
   "article.bbl"
   "article.blg"
   (rewritten before read)
-["pdflatex"] 1767638102.36601 "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" "article.pdf" "article" 1767638104.33316 0
-  "../src/ParticleEM.cpp" 1767638101.82375 11984 9d16a6c04a878d2c986fa03ae8c2a164 ""
-  "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" 1767637982.3445 12557 333ca27971f7f5171cf79cbb4ed4a7ee ""
+["pdflatex"] 1767656576.11943 "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" "article.pdf" "article" 1767656578.21771 0
+  "../src/ParticleEM.cpp" 1767638166.11737 11984 9d16a6c04a878d2c986fa03ae8c2a164 ""
+  "/Users/gabriele/GitHub/Particles_in_EM_Fields/article/article.tex" 1767656573.70353 16954 5988dbd9ee1124c462d1dd686c6c2f2e ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -116,6 +116,7 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def" 1713382759 19440 9da9dcbb27470349a580fca7372d454b ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/color.sty" 1730496337 7245 57f7defed4fb41562dc4b6ca13958ca9 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty" 1730496337 18363 dee506cb8d56825d8a4d020f5d5f8704 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty" 1717359999 8010 6f2ad8c2b2ffbd607af6475441c7b5e4 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty" 1717359999 2671 70891d50dac933918b827d326687c6e8 ""
@@ -143,19 +144,22 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/physics/physics.sty" 1356048875 29610 a9597219b282d9c78b02393dcd7d4322 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657483315 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/siunitx/siunitx.sty" 1740687122 340829 1b2c1d1f1f03e683fab4091869acffd3 ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/tools/array.sty" 1730496337 14552 27664839421e418b87f56fa4c6f66b1a ""
+  "/usr/local/texlive/2025/texmf-dist/tex/latex/translations/translations.sty" 1644096163 44247 2188b95d0ee74e31eca4d316263c58a7 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty" 1727642399 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1743493427 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1743493289 3345731 1b54ae79c33d7c2bf6de57c6693051df ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "article.aux" 1767638104.20572 2266 f965b325e036daf309c864c093248945 "pdflatex"
+  "article.aux" 1767656578.09742 2414 8bd3d4cce5edccd137bff6946d5d05f2 "pdflatex"
   "article.bbl" 1767636536.90918 3910 ce44e7071ec3fddd66a7f09b12730b04 "biber article"
-  "article.out" 1767638104.20897 1281 1a52f89d73a86072dbf471c17da17154 "pdflatex"
-  "article.run.xml" 1767638104.21139 2328 f7582eb893c57784faecb3cc7b311259 "pdflatex"
-  "article.tex" 1767637982.3445 12557 333ca27971f7f5171cf79cbb4ed4a7ee ""
-  "article.toc" 1767638104.21149 741 d8df8ae9b7338b3846f14c30a0bcdd24 "pdflatex"
-  "packages.sty" 1767627885.3012 2955 24e1ee60764a5b8cb7440449f3a4b176 ""
+  "article.out" 1767656578.1007 1281 1a52f89d73a86072dbf471c17da17154 "pdflatex"
+  "article.run.xml" 1767656578.1032 2328 f7582eb893c57784faecb3cc7b311259 "pdflatex"
+  "article.tex" 1767656573.70353 16954 5988dbd9ee1124c462d1dd686c6c2f2e ""
+  "article.toc" 1767656578.10329 741 d2167284d04f2d2aabe8473867733d80 "pdflatex"
+  "packages.sty" 1767653036.3407 3157 b558047c4106c6f9716559cd9e2d8fb6 ""
   (generated)
   "article.aux"
   "article.bcf"

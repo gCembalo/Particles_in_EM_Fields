@@ -45,7 +45,43 @@ In questo progetto si studia il moto di una o più particelle cariche, non relat
 
 
 \section{Teoria\label{sctn:teoria}}
+
+Come già accennato nell'introduzione, lo scopo di questo progetto è quello di studiare il modo di una o più particelle, non relativistiche, in un campo elettromagnetico fissato. Vogliamo risolvere l'equazione di Lorentz:
+\begin{equation}
+    \dv{\mathbf{v}}{t} = \frac{e}{mc}\left(c\mathbf{E} + \mathbf{v}\cross\mathbf{B}\right)
+    \label{eqn:1 forza di Lorentz}
+\end{equation}
+scritta nel sistema c.g.s., in cui $e$ è la carica della particella, $m$ e $\mathbf{v}$ rispettivamente la sua massa e velocità, $c$ la velocità della luce nel vuoto e $\mathbf{E}$ e $\mathbf{B}$ i campi elettrico e magnetico. Se consideriamo $e = -4.80\cdot 10^{-10}\ \unit{statC}$ la carica elementare di un elettrone e la massa $m = m_e = 9.11\cdot 10^{-28}\ \unit{g}$ la massa dell'elettrone, allora ricordando anche il valore $c = 3\cdot 10^{10}\ \unit{cm/s}$ otteniamo il fattore:
+\begin{equation}
+    \alpha = \frac{e}{m_e c} = 1.76\cdot 10^7\ \unit{cm^{1/2}\, g^{-1/2}\, s^{-1}}
+\end{equation}
+davanti alla forza di Lorentz (\ref{eqn:1 forza di Lorentz}). Per comodità si preferisce lavorare con quantità adimensionali (linguaggio macchina). Se poniamo $\alpha = 1$, allora dobbiamo considerare una scala temporale in $10^{-7}\ \unit{s}$ per avere le stime delle nostre quantità fisiche dai risultati della simulazione. Infatti, se scriviamo le quantità fisiche, ad esempio una generica $b$, come $b = b_{cgs} b_c$, in cui $b_{cgs}$ è una costante in unità c.g.s. che rappresenta l'unità di scala sceltà, mentre $b_c$ è la quantità adimensionale da usare nel codice, allora otteniamo l'equazione del moto:
+\begin{equation}
+    \frac{1}{t_{cgs}}\dv{t_c}\left(\frac{l_{cgs}}{t_{cgs}} \mathbf{v}_c\right) = \frac{e}{m_e c}\left[ \frac{m_e c}{e} \frac{l_{cgs}}{t_{cgs}^2}\mathbf{E}_c + \left( \frac{l_{cgs}}{t_{cgs}}\mathbf{v}_c \right) \cross \left( \frac{m_e}{e} \frac{1}{t_{cgs}} \mathbf{B}_c \right) \right]
+\end{equation}
+mentre l'equazione adimensionale che dobbiamo risolvere nel codice è:
+\begin{equation}
+    \dv{\mathbf{v}_c}{t_c} = \left( \mathbf{E}_c + \mathbf{v}_c\cross\mathbf{B}_c\right).
+    \label{eqn:1 forza di Lorentz linguaggio macchina}
+\end{equation}
+Sappiamo bene che l'equazione (\ref{eqn:1 forza di Lorentz linguaggio macchina}) non descrive alcun sistema fisico, ma contiene delle quantità collegate alle osservabili del nostro problema tramite lo scaling dalla costante $\alpha$. Per ottenere le informazioni fisiche dovremo prendere i risultati delle nostre simulazioni e applicare la trasformazione $b = b_{cgs} b_c$ con $b_{cgs} = 1/\alpha$. Ad esempio, per il tempo avremo:
+\begin{equation}
+    t = t_{cgs} t_c = \frac{m_e c}{e}\, t_c\ \unit{s} = \frac{ 9.11\cdot 10^{-28} \cdot 3\cdot 10^{10} }{ 4.80 \cdot 10^{-10} }\, t_c\ \unit{s} \approx 5.69\cdot 10^{-8}\, t_c\ \unit{s}.
+\end{equation}
+
+Può risultare utile per l'implementazione del codice scomporre l'equazione (\ref{eqn:1 forza di Lorentz linguaggio macchina}) nelle tre componenti spaziali:
+\begin{align}
+    \dv{v_{c,x}}{t} &= \left( E_{c,x} + v_{c,y}B_{c,z} - v_{c,z}B_{c,y} \right) \notag \\
+    \dv{v_{c,y}}{t} &= \left( E_{c,y} + v_{c,z}B_{c,x} - v_{c,x}B_{c,z} \right) \\
+    \dv{v_{c,z}}{t} &= \left( E_{c,z} + v_{c,x}B_{c,y} - v_{c,y}B_{c,x} \right) \notag
+\end{align}
+in cui notiamo che il campo magnetico contribuisce solo per la variazione della
+direzione della velocità, e non del modulo di essa, per via del prodotto vettoriale.
+
+
 \section{Metodi numerici utilizzati\label{sctn:metodi numerici}}
+
+La necessità di adottare un approccio numerico per questo problema deriva principalmente dalla natura intrinseca delle equazioni del moto in presenza di campi elettromagnetici non banali. Sebbene per configurazioni estremamente semplificate sia possibile determinare una soluzione analitica, l'integrazione delle equazioni di Lorentz diventa rapidamente complessa non appena si considerano campi spazialmente variabili o configurazioni multi-particella. Infatti, in tali casi, il sistema di equazioni differenziali ordinarie risulta accoppiato e spesso non risolvibile in forma chiusa tramite funzioni elementari. L'utilizzo di algoritmi numerici permette quindi di superare i limiti della trattazione analitica, consentendo lo studio di traiettorie in geometrie arbitrarie, come nel caso del punto a X, e garantendo al contempo il controllo dell'accuratezza e della conservazione delle grandezze fisiche fondamentali su tempi di integrazione prolungati.
 
 I metodi numerici utilizzati in questo progetto sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris.
 

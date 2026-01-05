@@ -22,6 +22,13 @@
 \usepackage{xcolor}
 \usepackage{physics}
 \usepackage{changepage}
+\usepackage{siunitx}
+
+% To fix the problem between physics package and siunitx
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\ExplSyntaxOn
+\msg_redirect_name:nnn{siunitx}{physics-pkg}{none}
+\ExplSyntaxOff
 
 %\usepackage{hyperref}
 % When you want to print the document you can remove the comment from the
