@@ -48,6 +48,8 @@ In questo progetto si studia il moto di una o più particelle cariche, non relat
 
 I metodi numerici utilizzati in questo progetto sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris.
 
+Le referenze per questi due metodi numerici sono chiaramente le slide delle lezioni, ma per il metodo Boris si è anche consultata la trattazione fatta da Qun et al. \cite{Qin2013Boris}, ma una spiegazione più intuitiva, didattica e operativa può anche essere trovata in \cite{PICvxB2011}.
+
 
 \subsection{Metodo Runge-Kutta del quart'ordine}
 
@@ -130,6 +132,12 @@ La struttura simmetrica del metodo consente una buona conservazione delle invari
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lstinputlisting[language=C++]{../src/ParticleEM.cpp}
+
+% Bibliography
+\phantomsection
+\addcontentsline{toc}{section}{\bibname} % No numerate bibliography
+%\nocite{*}
+\printbibliography % Printing
 
 
 \end{document}

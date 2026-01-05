@@ -1,0 +1,104 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{PICvxB2011}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=01143cc853e031f7e6c111fb3a9f6496}{%
+           family={{Particle In Cell Consulting}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{fullhash}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{fullhashraw}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{bibnamehash}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{authorbibnamehash}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{authornamehash}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{authorfullhash}{01143cc853e031f7e6c111fb3a9f6496}
+      \strng{authorfullhashraw}{01143cc853e031f7e6c111fb3a9f6496}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.particleincell.com/2011/vxb-rotation/}}
+      \field{note}{Accessed: 2026-01-05}
+      \field{title}{The Boris Method: \textbf{v} $\times$ \textbf{B} Rotation}
+      \field{year}{2011}
+    \endentry
+    \entry{Qin2013Boris}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=152d7dff2a31e22f49e2fa3ea7e4c6b0}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Hong},
+           giveni={H\bibinitperiod}}}%
+        {{hash=59e7d5c9216ac9c93158ef7fff9a6711}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Shuangxi},
+           giveni={S\bibinitperiod}}}%
+        {{hash=32c5f9a390cd38d78c5e1dfc2072a987}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Jianyuan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fd903bc507de58459375d974764ab4ea}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=48d536afa3e766665169bd757919533b}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Yajuan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0ead30d0c7560b9a156ba08944ecd752}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={William\bibnamedelima M.},
+           giveni={W\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{087910c2ce6690d57ae7641fd146c924}
+      \strng{fullhash}{9e1a14fc615ffb374173434c80ff499d}
+      \strng{fullhashraw}{9e1a14fc615ffb374173434c80ff499d}
+      \strng{bibnamehash}{087910c2ce6690d57ae7641fd146c924}
+      \strng{authorbibnamehash}{087910c2ce6690d57ae7641fd146c924}
+      \strng{authornamehash}{087910c2ce6690d57ae7641fd146c924}
+      \strng{authorfullhash}{9e1a14fc615ffb374173434c80ff499d}
+      \strng{authorfullhashraw}{9e1a14fc615ffb374173434c80ff499d}
+      \field{sortinit}{Q}
+      \field{sortinithash}{ce69a400a872ddd02ee7fdb3b38c6abd}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics of Plasmas}
+      \field{number}{8}
+      \field{title}{Why is Boris algorithm so good?}
+      \field{volume}{20}
+      \field{year}{2013}
+      \field{pages}{084503}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1063/1.4818428
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
