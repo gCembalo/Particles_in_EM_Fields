@@ -17,9 +17,9 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-# define STAGE 4 // Choose the problem type (1 to 4)
-                 // 1,2,3 : single particle
-                 // 4 : multiple particles (N_Part)
+#define STAGE 3 // Choose the problem type (1 to 4)
+                // 1,2,3 : single particle
+                // 4 : multiple particles (N_Part)
 #define NMAX_EQ 64 // Maximum number of elements (safety limit)
                    // to avoid variable-size arrays
 #define N_Part 1.e3 // Number of particles in the multi-particle problem
@@ -43,23 +43,106 @@ void BorisStep(double, double *, double *, double);
 ////////////////////////////////////////////////////////////////////////////////
 int main(){
 
-    ofstream fdata;
-    fdata.open("file.dat"); // Solutions file
+    ofstream fdata1 , fdata2 , fdata3;
+    fdata1.open("RK4.dat");   // Solutions file
+    fdata2.open("BORIS.dat"); // Solutions file
+    fdata3.open("ERR.dat");   // Error file
 
-    fdata << setiosflags ( ios::scientific );
-    fdata << setprecision ( 10 );
+    fdata1 << setiosflags ( ios::scientific );
+    fdata1 << setprecision ( 10 );
+    fdata2 << setiosflags ( ios::scientific );
+    fdata2 << setprecision ( 10 );
+    fdata3 << setiosflags ( ios::scientific );
+    fdata3 << setprecision ( 10 );
 
     cout << setiosflags ( ios::scientific );
     cout << setprecision ( 7 );
 
     int neq = 6; // Number of equations
+    int i , j;   // Loop index
+    int k = 0;   // Control variable to check if in multiparticle problem they
+                 // go outside the EB field region.
+    int n_time = 3;  // Number of different time step
 
-    double Y[neq]; // (x, y, z)    = (Y[0], Y[1], Y[2])
-                   // (vx, vy, vz) = (Y[3], Y[4], Y[5])
+    double t = 0.0;                      // Time variable
+    double dt = 0.01;                    // Time step
+    double dt_vec[3] = {1.0, 0.1, 0.01}; // Vector to change the time step
+    double errRK4 = 0.0 , errBor = 0.0;  // Error variables
+
+    double YRK4[neq] , YBor[neq]; // Solutions vector (for each method)
+                                  // (x, y, z)    = (Y[0], Y[1], Y[2])
+                                  // (vx, vy, vz) = (Y[3], Y[4], Y[5])
 
     double EB[neq]; // Electromagnetic field
                     // (Ex, Ey, Ez) = (EB[0], EB[1], EB[2])
                     // (Bx, By, Bz) = (EB[3], EB[4], EB[5])
+
+    #if STAGE == 1 || STAGE == 2 || STAGE == 3  // Single particle problem
+
+    // Set the initial condition
+    InitialCondition(YRK4);
+    InitialCondition(YBor);
+
+    // Print the initial condition (t, x, y, z, 0.5 v^2)
+    fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] << "  "
+           << 0.5*( YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5] )
+           << endl;
+    fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] << "  "
+                << 0.5*( YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5] )
+                << endl;
+
+    // Solve the equation with each method with different time step
+    // The ElettroMagnetic field will be set inside each method
+    for( i = 0 ; i < n_time ; i++ ){
+
+        t = 0.0;
+        dt = dt_vec[i]; // Set the time step
+
+        // Set the initial condition
+        InitialCondition(YRK4);
+        InitialCondition(YBor);
+
+        // Solve the equation
+        for( j = 0 ; j < TL ; j++ ){
+
+            RK4Step(t, YRK4, EB, RHSFunc, dt, neq);
+            BorisStep(t, YBor, EB, dt);
+
+            t += dt; // increasing the time
+
+            // Print in the data file (t, x, y, z, 0.5 v^2)
+            fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
+                   << "  "
+                   << 0.5*( YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5] )
+                   << endl;
+            fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
+                   << "  "
+                   << 0.5*( YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5] )
+                   << endl;
+        }
+
+        fdata1 << endl << endl; // Skip 2 line in data file
+        fdata2 << endl << endl;
+
+        // Compute the error as the difference between numerical 
+        // and analytical solutions at t.
+        errRK4 = sqrt( (YRK4[0] - sin(t))*(YRK4[0] - sin(t)) +
+                       (YRK4[1] - cos(t))*(YRK4[1] - cos(t)) );
+        errBor = sqrt( (YBor[0] - sin(t))*(YBor[0] - sin(t)) +
+                       (YBor[1] - cos(t))*(YBor[1] - cos(t)) );
+
+        // Print the error in data file
+        fdata3 << dt << "  " << errRK4 << "  " << errBor << endl;
+
+    }
+
+    #elif STAGE == 4  // Multiparticle problem
+
+    #endif
+
+    fdata1.close();
+    fdata2.close();
+    fdata3.close();
 
     return 0;
 
