@@ -25,7 +25,7 @@ using namespace std;
 #define N_Part 3000 // Number of particles in the multi-particle problem
 #define X_L 1000.0  // Boundary half-width along X axis for STAGE 4
 #define Y_L 1000.0  // Boundary half-width along Y axis for STAGE 4
-#define TL 100.0    // Simulation's final time
+#define TL 300.0    // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //
