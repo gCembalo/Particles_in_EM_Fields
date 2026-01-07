@@ -57,7 +57,7 @@ scritta nel sistema c.g.s., in cui $e$ è la carica della particella, $m$ e $\ma
 \end{equation}
 davanti alla forza di Lorentz (\ref{eqn:1 forza di Lorentz}). Per comodità si preferisce lavorare con quantità adimensionali (linguaggio macchina). Se poniamo $\alpha = 1$, allora dobbiamo considerare una scala temporale in $10^{-7}\ \unit{s}$ per avere le stime delle nostre quantità fisiche dai risultati della simulazione. Infatti, se scriviamo le quantità fisiche, ad esempio una generica $b$, come $b = b_{cgs} b_c$, in cui $b_{cgs}$ è una costante in unità c.g.s. che rappresenta l'unità di scala sceltà, mentre $b_c$ è la quantità adimensionale da usare nel codice, allora otteniamo l'equazione del moto:
 \begin{equation}
-    \frac{1}{t_{cgs}}\dv{t_c}\left(\frac{l_{cgs}}{t_{cgs}} \mathbf{v}_c\right) = \frac{e}{m_e c}\left[ \frac{m_e c}{e} \frac{l_{cgs}}{t_{cgs}^2}\mathbf{E}_c + \left( \frac{l_{cgs}}{t_{cgs}}\mathbf{v}_c \right) \cross \left( \frac{m_e}{e} \frac{1}{t_{cgs}} \mathbf{B}_c \right) \right]
+    \frac{l_{cgs}}{t^2_{cgs}}\dv{\mathbf{v}_c}{t_c} = \frac{e}{m_e c}\left[ \frac{m_e c}{e} \frac{l_{cgs}}{t_{cgs}^2}\mathbf{E}_c + \left( \frac{l_{cgs}}{t_{cgs}}\mathbf{v}_c \right) \cross \left( \frac{m_e}{e} \frac{1}{t_{cgs}} \mathbf{B}_c \right) \right]
 \end{equation}
 mentre l'equazione adimensionale che dobbiamo risolvere nel codice è:
 \begin{equation}
@@ -81,11 +81,11 @@ direzione della velocità, e non del modulo di essa, per via del prodotto vettor
 
 \section{Metodi numerici utilizzati\label{sctn:metodi numerici}}
 
-La necessità di adottare un approccio numerico per questo problema deriva principalmente dalla natura intrinseca delle equazioni del moto in presenza di campi elettromagnetici non banali. Sebbene per configurazioni estremamente semplificate sia possibile determinare una soluzione analitica, l'integrazione delle equazioni di Lorentz diventa rapidamente complessa non appena si considerano campi spazialmente variabili o configurazioni multi-particella. Infatti, in tali casi, il sistema di equazioni differenziali ordinarie risulta accoppiato e spesso non risolvibile in forma chiusa tramite funzioni elementari. L'utilizzo di algoritmi numerici permette quindi di superare i limiti della trattazione analitica, consentendo lo studio di traiettorie in geometrie arbitrarie, come nel caso del punto a X, e garantendo al contempo il controllo dell'accuratezza e della conservazione delle grandezze fisiche fondamentali su tempi di integrazione prolungati.
+La necessità di adottare un approccio numerico per questo problema deriva principalmente dalla natura intrinseca delle equazioni del moto in presenza di campi elettromagnetici non banali. Sebbene per configurazioni estremamente semplificate sia possibile determinare una soluzione analitica, l'integrazione delle equazioni di Lorentz diventa rapidamente complessa non appena si considerano campi spazialmente variabili o configurazioni multi-particella. In questi casi, infatti, il sistema di equazioni differenziali ordinarie risulta accoppiato e spesso non risolvibile in forma chiusa tramite funzioni elementari. 
 
-I metodi numerici utilizzati in questo progetto sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris.
+L'utilizzo di algoritmi numerici permette quindi di superare i limiti della trattazione analitica, consentendo lo studio di traiettorie in geometrie arbitrarie, come nel caso del punto a X, e garantendo al contempo il controllo dell'accuratezza e della conservazione delle grandezze fisiche fondamentali su tempi di integrazione prolungati.
 
-Le referenze per questi due metodi numerici sono chiaramente le slide delle lezioni, ma per il metodo Boris si è anche consultata la trattazione fatta da Qun et al. \cite{Qin2013Boris}, consultabile al seguente \href{https://digital.library.unt.edu/ark:/67531/metadc843445/m2/1/high_res_d/1090047.pdf}{link}, ma una spiegazione più intuitiva, didattica e operativa può anche essere trovata in \cite{PICvxB2011}.
+In questo progetto, i metodi numerici utilizzati sono il metodo di Runge-Kutta del quarto ordine e l'algoritmo di Boris. Le principali fonti di riferimento per questi metodi sono le slide delle lezioni; per quanto riguarda il metodo di Boris, si è fatto riferimento anche alla trattazione di Qin et al. \cite{Qin2013Boris}, consultabile al seguente \href{https://digital.library.unt.edu/ark:/67531/metadc843445/m2/1/high_res_d/1090047.pdf}{link}. Una spiegazione più intuitiva, didattica e operativa è inoltre disponibile in \cite{PICvxB2011}.
 
 
 \subsection{Metodo Runge-Kutta del quart'ordine}
@@ -180,6 +180,7 @@ così viene comodo calcolare:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lstinputlisting[language=C++]{../src/ParticleEM.cpp}
+\vspace{0.5cm}
 
 % Bibliography
 \phantomsection

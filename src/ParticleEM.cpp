@@ -17,15 +17,15 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-#define STAGE 3 // Choose the problem type (1 to 4)
-                // 1,2,3 : single particle
-                // 4 : multiple particles (N_Part)
-#define NMAX_EQ 64 // Maximum number of elements (safety limit)
-                   // to avoid variable-size arrays
-#define N_Part 1.e3 // Number of particles in the multi-particle problem
-#define X_L 1000 // Length of the X axis for STAGE 4
-#define Y_L 1000 // Length of the Y axis for STAGE 4
-#define TL 100.0 // Simulation's final time
+#define STAGE 4     // Choose the problem type (1 to 4)
+                    // 1,2,3 : single particle
+                    // 4 : multiple particles (N_Part)
+#define NMAX_EQ 64  // Maximum number of elements (safety limit)
+                    // to avoid variable-size arrays
+#define N_Part 3000 // Number of particles in the multi-particle problem
+#define X_L 1000.0  // Boundary half-width along X axis for STAGE 4
+#define Y_L 1000.0  // Boundary half-width along Y axis for STAGE 4
+#define TL 100.0    // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //
@@ -44,9 +44,9 @@ void BorisStep(double, double *, double *, double);
 int main(){
 
     ofstream fdata1 , fdata2 , fdata3;
-    fdata1.open("RK4.dat");   // Solutions file
-    fdata2.open("BORIS.dat"); // Solutions file
-    fdata3.open("ERR.dat");   // Error file
+    fdata1.open("../data/RK4.dat");   // Solutions file
+    fdata2.open("../data/BORIS.dat"); // Solutions file
+    fdata3.open("../data/ERR.dat");   // Error file
 
     fdata1 << setiosflags ( ios::scientific );
     fdata1 << setprecision ( 10 );
@@ -62,11 +62,12 @@ int main(){
     int i , j;   // Loop index
     int k = 0;   // Control variable to check if in multiparticle problem they
                  // go outside the EB field region.
+
     int n_time = 3;  // Number of different time step
 
     double t = 0.0;                      // Time variable
     double dt = 0.01;                    // Time step
-    double dt_vec[3] = {1.0, 0.1, 0.01}; // Vector to change the time step
+    double dt_vec[] = {1.0, 0.1, 0.01};  // Vector to change the time step
     double errRK4 = 0.0 , errBor = 0.0;  // Error variables
 
     double YRK4[neq] , YBor[neq]; // Solutions vector (for each method)
@@ -85,43 +86,44 @@ int main(){
 
     // Print the initial condition (t, x, y, z, 0.5 v^2)
     fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] << "  "
-           << 0.5*( YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5] )
+           << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
            << endl;
     fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] << "  "
-                << 0.5*( YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5] )
-                << endl;
+           << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
+           << endl;
 
     // Solve the equation with each method with different time step
-    // The ElettroMagnetic field will be set inside each method
+    // The ElectroMagnetic field will be set inside each method
     for( i = 0 ; i < n_time ; i++ ){
 
-        t = 0.0;
         dt = dt_vec[i]; // Set the time step
 
         // Set the initial condition
         InitialCondition(YRK4);
         InitialCondition(YBor);
 
+        t = 0.0;
+
         // Solve the equation
-        for( j = 0 ; j < TL ; j++ ){
+        for( j = 0 ; t < TL ; j++ ){
 
             RK4Step(t, YRK4, EB, RHSFunc, dt, neq);
             BorisStep(t, YBor, EB, dt);
 
-            t += dt; // increasing the time
+            t += dt; // increasing time
 
             // Print in the data file (t, x, y, z, 0.5 v^2)
             fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
                    << "  "
-                   << 0.5*( YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5] )
+                   << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
                    << endl;
             fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
                    << "  "
-                   << 0.5*( YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5] )
+                   << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
                    << endl;
         }
 
-        fdata1 << endl << endl; // Skip 2 line in data file
+        fdata1 << endl << endl; // Skip 2 line in the data file
         fdata2 << endl << endl;
 
         // Compute the error as the difference between numerical 
@@ -137,6 +139,110 @@ int main(){
     }
 
     #elif STAGE == 4  // Multiparticle problem
+
+    // We need to generate some random quantities (used in InitialCondition)
+    srand48(time(NULL));
+
+    // Print the initial condition
+    for( i = 0 ; i < N_Part ; i++ ){
+
+        // Set the initial condition
+        InitialCondition(YRK4);
+        InitialCondition(YBor);
+
+        // Print in the data file (t, x, y, z, 0.5 v^2)
+            fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
+                   << "  "
+                   << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
+                   << endl;
+            fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
+                   << "  "
+                   << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
+                   << endl;
+        
+    }
+
+    // Solve the equation with each method with different time step
+    // The ElettroMagnetic field will be set inside each method
+    for( i = 0 ; i < N_Part ; i++ ){
+
+        // Set the initial condition
+        InitialCondition(YRK4);
+
+        t = 0.0; // Setting the starting time
+
+        // Solve the equation
+        for( j = 0 ; t < TL ; j++ ){
+
+            k = 0;
+
+            // Use 'k' as a flag to check if the particle leaves the 
+            // computational domain. If so, we break the loop.
+            if( YRK4[0] < -X_L || YRK4[0] > X_L 
+                || YRK4[1] < -Y_L || YRK4[1] > Y_L ){
+                
+                    k = 1;
+                    break;
+
+            }
+
+            RK4Step(t, YRK4, EB, RHSFunc, dt, neq);
+
+            t += dt; // increasing time
+
+        }
+
+        if( k == 0 ){
+
+            // Print in the data file (t, x, y, z, 0.5 v^2)
+            fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
+                   << "  "
+                   << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
+                   << endl;
+
+        }
+
+    }
+
+    for( i = 0 ; i < N_Part ; i++ ){
+
+        // Set the initial condition
+        InitialCondition(YBor);
+
+        t = 0.0; // Setting the starting time
+
+        // Solve the equation
+        for( j = 0 ; t < TL ; j++ ){
+
+            k = 0;
+
+            // We'll use the integer k to check if our solution are going
+            // outside the integral region. If so, we break the loop.
+            if( YBor[0] < -X_L || YBor[0] > X_L 
+                || YBor[1] < -Y_L || YBor[1] > Y_L ){
+                
+                    k = 1;
+                    break;
+
+            }
+
+            BorisStep(t, YBor, EB, dt);
+
+            t += dt; // Increasing time
+
+        }
+
+        if( k == 0 ){
+
+            // Print in the data file (t, x, y, z, 0.5 v^2)
+            fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
+                   << "  "
+                   << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
+                   << endl;
+
+        }
+
+    }
 
     #endif
 
@@ -169,17 +275,17 @@ void EB_Fields(double *Y, double *EB){
 
     #elif STAGE == 2 // Single particle problem
                      // ExB drift in parallel configuration ( |E| < |B| )
-        EB[0] = 0.0 ; EB[1] = 0.0 ; EB[2] = 0.8;
+        EB[0] = 0.0 ; EB[1] = 0.0 ; EB[2] = 0.6;
         EB[3] = 0.0 ; EB[4] = 0.0 ; EB[5] = 1.0;
 
     #elif STAGE == 3 // Single particle problem
                      // ExB drift in perpendicular configuration ( |E| < |B| )
-        EB[0] = 0.0 ; EB[1] = 0.8 ; EB[2] = 0.0;
+        EB[0] = 0.0 ; EB[1] = 0.6 ; EB[2] = 0.0;
         EB[3] = 0.0 ; EB[4] = 0.0 ; EB[5] = 1.0;
 
     #elif STAGE == 4 // Multiple particles problem
-                     // X point
-        EB[0] = 0.0 ; EB[1] = 0.0 ; EB[2] = 0.5;
+                     // X point configuration
+        EB[0] = 0.0    ; EB[1] = 0.0    ; EB[2] = 0.5;
         EB[3] = Y[1]*l ; EB[4] = Y[0]*l ; EB[5] = 0.0;
 
     #endif
@@ -194,12 +300,11 @@ void EB_Fields(double *Y, double *EB){
 void InitialCondition(double *Y){
 
     #if STAGE == 1 || STAGE == 2 || STAGE == 3 // Single particle problem
-        Y[0] = 1.0 ; Y[1] = 0.0 ; Y[2] = 0.0; // Initial position
-        Y[3] = 0.0 ; Y[4] = 1.0 ; Y[5] = 0.0; // Initial velocity
+        Y[0] = 0.0 ; Y[1] = 1.0 ; Y[2] = 0.0; // Initial position
+        Y[3] = 1.0 ; Y[4] = 0.0 ; Y[5] = 0.0; // Initial velocity
 
     #elif STAGE == 4 // Multiple particle problem
-        // Setting random initial conditions 
-        // with a constraint on the velocity magnitude.
+        // Initialize random positions and velocities with fixed magnitude.
         double x, y, v, vx, vy, theta;
         v = 0.1;
 
@@ -214,8 +319,8 @@ void InitialCondition(double *Y){
         vy = v*sin(theta);
 
         // Filling the state vector
-        Y[0] = x ; Y[1] = y ; Y[2] = 0.0;   // Initial position
-        Y[3] = vx ; Y[4] = vy ; Y[5] = 0.0; // Initial velocity
+        Y[0] = x  ; Y[1] = y  ; Y[2] = 0.0;   // Initial position
+        Y[3] = vx ; Y[4] = vy ; Y[5] = 0.0;   // Initial velocity
 
     #endif
 
@@ -236,8 +341,8 @@ void RHSFunc(double t, double *Y, double *EB, double *R){
     EB_Fields(Y, EB); // Fill the EB vector
 
     // Assigning variables
-    double x = Y[0] , y = Y[1], z = Y[2];
-    double vx = Y[3] , vy = Y[4] , vz = Y[5];
+    double x = Y[0]   , y = Y[1]   , z = Y[2];
+    double vx = Y[3]  , vy = Y[4]  , vz = Y[5];
     double Ex = EB[0] , Ey = EB[1] , Ez = EB[2];
     double Bx = EB[3] , By = EB[4] , Bz = EB[5];
 
@@ -303,7 +408,7 @@ void RK4Step(double t, double *Y, double *EB,
     // Loop to compute Y_{n+1} = Y_n + h/6 * ( k1 + 2*k2 + 2*k3 + k4 )
     for(i = 0 ; i < neq ; i++){
         
-        Y[i] += h * ( k1[i] + 2.0*k2[i] + 2.0*k3[i] + k4[i] ) / 6.0;
+        Y[i] += h * ( k1[i] + 2.0*k2[i] + 2.0*k3[i] + k4[i] )/6.0;
 
     }
 
@@ -338,6 +443,8 @@ void BorisStep(double t, double *Y, double *EB, double h){
     //        s_vec = 2t / ( 1 + |t|^2 )
     //        v^prime = v_- + v_- cross t
     double t_mag; // This is the magnitude ^2 of t_vec
+
+    EB_Fields(Y, EB); // Fill the EB vector
 
     // 1. Compute the position half-step: x_{n+1/2} = x_n + v_n * h/2
     for( i = 0 ; i < 3 ; i++ ){
