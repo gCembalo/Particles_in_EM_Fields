@@ -1,10 +1,10 @@
 # plots Particles in EM Field
 
 # --------------------------------------------------------------------------- #
-#                                   Boris                                    #
+#                                   Boris                                     #
 # --------------------------------------------------------------------------- #
 
-# ---------------------------- Boris 3d t = 0.0 ---------------------------- #
+# ---------------------------- Boris 3d t = 0.0 ----------------------------- #
 reset
 
 # Setting the 3d map
@@ -88,7 +88,7 @@ yl2(t) = -1000*t/3
 
 # Plotting the data and function for X shape
 plot \
-    "../data/BORIS.dat" every ::1::3000 using 2:3:5 w p ps 0.3 lc palette notitle, \
+    "../data/BORIS.dat" index 0 using 2:3:5 w p ps 0.3 lc palette notitle, \
     xl(t),  yl(t)    w l lw 0.5 lc rgb "gray" notitle, \
     xl2(t), yl2(t)   w l lw 0.5 lc rgb "gray" notitle, \
     xha(t),  yha(t)  w l lw 0.5 lc rgb "gray" notitle, \
@@ -191,7 +191,7 @@ yl2(t) = -1000*t/3
 
 # Plotting the data and function for X shape
 plot \
-    "../data/BORIS.dat" every ::3001::6000 using 2:3:5 w p ps 0.3 lc palette notitle, \
+    "../data/BORIS.dat" using 2:3:5 index 1 w p ps 0.3 lc palette notitle, \
     xl(t),  yl(t)    w l lw 0.5 lc rgb "gray" notitle, \
     xl2(t), yl2(t)   w l lw 0.5 lc rgb "gray" notitle, \
     xha(t),  yha(t)  w l lw 0.5 lc rgb "gray" notitle, \
@@ -298,7 +298,7 @@ yl2(t) = -1000*t/3
 
 # Plotting the data and function for X shape
 plot \
-    "../data/RK4.dat" every ::1::3000 using 2:3:5 w p ps 0.3 lc palette notitle, \
+    "../data/RK4.dat" using 2:3:5 index 0 w p ps 0.3 lc palette notitle, \
     xl(t),  yl(t)    w l lw 0.5 lc rgb "gray" notitle, \
     xl2(t), yl2(t)   w l lw 0.5 lc rgb "gray" notitle, \
     xha(t),  yha(t)  w l lw 0.5 lc rgb "gray" notitle, \
@@ -401,7 +401,7 @@ yl2(t) = -1000*t/3
 
 # Plotting the data and function for X shape
 plot \
-    "../data/RK4.dat" every ::3001::6000 using 2:3:5 w p ps 0.3 lc palette notitle, \
+    "../data/RK4.dat" using 2:3:5 index 1 w p ps 0.3 lc palette notitle, \
     xl(t),  yl(t)    w l lw 0.5 lc rgb "gray" notitle, \
     xl2(t), yl2(t)   w l lw 0.5 lc rgb "gray" notitle, \
     xha(t),  yha(t)  w l lw 0.5 lc rgb "gray" notitle, \

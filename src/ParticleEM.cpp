@@ -17,15 +17,15 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-#define STAGE 4     // Choose the problem type (1 to 4)
-                    // 1,2,3 : single particle
-                    // 4 : multiple particles (N_Part)
-#define NMAX_EQ 64  // Maximum number of elements (safety limit)
-                    // to avoid variable-size arrays
-#define N_Part 3000 // Number of particles in the multi-particle problem
-#define X_L 1000.0  // Boundary half-width along X axis for STAGE 4
-#define Y_L 1000.0  // Boundary half-width along Y axis for STAGE 4
-#define TL 300.0    // Simulation's final time
+#define STAGE 1      // Choose the problem type (1 to 4)
+                     // 1,2,3 : single particle
+                     // 4     : multiple particles (N_Part)
+#define NMAX_EQ 64   // Maximum number of elements (safety limit)
+                     // to avoid variable-size arrays
+#define N_Part 10000 // Number of particles in the multi-particle problem
+#define X_L 1000.0   // Boundary half-width along X axis for STAGE 4
+#define Y_L 1000.0   // Boundary half-width along Y axis for STAGE 4
+#define TL 1000.0     // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //
@@ -67,7 +67,7 @@ int main(){
 
     double t = 0.0;                      // Time variable
     double dt = 0.01;                    // Time step
-    double dt_vec[] = {1.0, 0.1, 0.01};  // Vector to change the time step
+    double dt_vec[] = {1.0, 0.1, 0.01, 0.001};  // Vector to change the time step
     double errRK4 = 0.0 , errBor = 0.0;  // Error variables
 
     double YRK4[neq] , YBor[neq]; // Solutions vector (for each method)
@@ -161,6 +161,9 @@ int main(){
                    << endl;
         
     }
+
+    fdata1 << endl << endl; // Skip 2 line in the data file
+    fdata2 << endl << endl;
 
     // Solve the equation with each method with different time step
     // The ElettroMagnetic field will be set inside each method
@@ -502,3 +505,27 @@ void BorisStep(double t, double *Y, double *EB, double h){
     }
 
 }
+
+////////////////////////////////////////////////////////////////////////////////
+//                             Plot parameter                                 //
+////////////////////////////////////////////////////////////////////////////////
+// I list the parameter I've used to plot the data (for each configuration).  //
+// Rotation (STAGE 1):                                                        //
+//           Err vs dt          TL = 100                                      //
+//           Kin en vs t        TL = 100                                      //
+//           Orbit (x,y)        TL = 100                                      //
+//           3D Orbit (x,y)     TL = 100                                      //
+// EM Parallel (STAGE 2):                                                     //
+//           3D Orbit (x,y)     TL = 100                                      //
+// EM Perpendicular (STAGE 3):                                                //
+//           Orbit (x,y)        TL = 100                                      //
+//           3D Orbit (x,y)     TL = 100                                      //
+// X point (STAGE 4):                                                         //
+//           Kin en vs (x,y)    TL      = 0 , 300 , 1000                      //
+//                              N_PART  = 3000                                //
+//           Istogram Kin en    TL      = 1000                                //
+//                              Scaling = 0.1                                 //
+//                              N_PART = 3000                                 //
+//           Power law          TL     = 1000                                 //
+//                              N_PART = 10000                                //
+////////////////////////////////////////////////////////////////////////////////
