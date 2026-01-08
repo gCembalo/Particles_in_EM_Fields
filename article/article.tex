@@ -72,7 +72,7 @@ Sappiamo bene che l'equazione (\ref{eqn:1 forza di Lorentz linguaggio macchina})
 Può risultare utile per l'implementazione del codice scomporre l'equazione (\ref{eqn:1 forza di Lorentz linguaggio macchina}) nelle tre componenti spaziali:
 \begin{align}
     \dv{v_{c,x}}{t} &= \left( E_{c,x} + v_{c,y}B_{c,z} - v_{c,z}B_{c,y} \right) \notag \\
-    \dv{v_{c,y}}{t} &= \left( E_{c,y} + v_{c,z}B_{c,x} - v_{c,x}B_{c,z} \right) \\
+    \dv{v_{c,y}}{t} &= \left( E_{c,y} + v_{c,z}B_{c,x} - v_{c,x}B_{c,z} \right) \label{eqn:1 equazione moto in componenti} \\
     \dv{v_{c,z}}{t} &= \left( E_{c,z} + v_{c,x}B_{c,y} - v_{c,y}B_{c,x} \right) \notag
 \end{align}
 in cui notiamo che il campo magnetico contribuisce solo per la variazione della
@@ -107,7 +107,7 @@ Le quattro valutazioni della funzione $R$ vengono effettuate in punti diversi de
 La combinazione pesata dei coefficienti $k_i$ deriva dall'approssimazione dell'integrale mediante la regola di Simpson e consente di ottenere un'elevata accuratezza senza aumentare il numero di passi temporali.
 
 
-\subsection{Metodo Boris}
+\subsection{Metodo Boris\label{sctn:metodo Boris}}
 
 Il secondo metodo utilizzato è il \textbf{metodo di Boris}, che è un integratore simplettico e un'estensione dell'algoritmo Position-Verlet. Questo metodo viene utilizzato per la risoluzione numerica del problema ai valori iniziali associato alle equazioni del moto di una particella carica soggetta a campi elettromagnetici, ovvero a problemi in cui la forza dipende dalla velocità, come nel caso descritto dal sistema:
 \begin{equation}
@@ -146,6 +146,162 @@ così viene comodo calcolare:
 
 
 \section{Risultati nelle diverse configurazioni\label{sctn:risultati}}
+
+Analizziamo in questa sezione i risultati ottenuti nelle varie configurazioni dei campi e condizioni iniziali. Viene inserita una prima sezione in cui viene spiegata (brevemente) la struttura del codice implementato nell'Appendice \ref{sctn:codice}.
+
+
+\subsection{Implementazione codice}
+
+Sono stati definiti i parametri:
+\begin{itemize}
+    \item \texttt{T\_L} indica il tempo totale di integrazione.
+    \item \texttt{N\_Part} indica il numero di particelle.
+    \item \texttt{X\_L} ed \texttt{Y\_L} per indicare il dominio quatrato del caso a multi-particelle.
+\end{itemize}
+
+Per i casi a singola particella - dunque le configurazioni di semplice rotazione, e di campi elettrico e magnetico parallelo e perpendicolari - è stato definito il vettore \texttt{t\_vec[]} per contenere diversi passi temporali con cui fare le simulazioni. Si sono utilizzati gli intervalli:
+\begin{equation*}
+    \Delta t = \big( 1.0\, , \, 0.1\, , \, 0.01 \big).
+    \label{eqn:1 intervalli temporali per single particle}
+\end{equation*}
+\textbf{Nota.} All'interno del codice è presenta anche un altro vettore \texttt{t\_vec[]} che però contiene gli intervalli temporali utilizzati per verificare la non conservazione delle proprietà geometriche del sistema da parte del metodo di Runge-Kutta. È dunque necessario fare attenzione a commentare il vettore di spaziatura temporale che non si vuole utilizzare.
+
+Le funzioni implementate, oltre ai metodi di risoluzione di Runge-Kutta del quart'ordine e di Boris, sono:
+\begin{itemize}
+    \item La funzione \texttt{EB\_Fields}, in cui a seconda della configurazione scelta viene riempito un vettore a 6 componenti con il campo elettrico e mangetico. In particolare si è scelto di mettere nelle prime 3 componenti il campo elettrico $E_x$, $E_y$, $E_z$, mentre nelle restanti il campo magnetico $B_x$, $B_y$ e $B_z$.
+    \item La funzione \texttt{InitialCondition}, in cui per ogni situazione analizzata vengono settate le condizioni iniziali al vettore delle soluzioni $Y[i]$, anch'esso a 6 componenti che sono: le prime 3 le posizioni $x$, $y$ e $z$, mentre le restanti sono le componenti della velocità $v_x$, $v_y$ e $v_z$.
+    \item La funzione \texttt{RHSFunc} che è la funzione del Right-Hand-Side function dell'equazione differenziale che stiamo studiando. Ovviamente differenzia le diverse configurazioni.
+\end{itemize}
+
+
+\subsection{Rotazione}
+
+Come prima configurazione si è utilizzata la situazione in cui il vettore di campo elettrico e magentico sono rispettivamente:
+\begin{equation}
+    \mathbf{E} = \big( 0.0\, , \, 0.0\, , \, 0.0 \big) \qquad ; \qquad \mathbf{B} = \big( 0.0\, , \, 0.0\, , \, 1.0 \big)
+\end{equation}
+e per la quale l'equazione del moto in componenti (\ref{eqn:1 equazione moto in componenti}) diventa:
+\begin{align}
+    \dv{v_{x}}{t} &= v_{y}B_{z} \notag \\
+    \dv{v_{y}}{t} &= - v_{x}B_{z} \label{eqn:1 edo rotazione} \\
+    \dv{v_{z}}{t} &= 0. \notag
+\end{align}
+Come condizioni iniziali su posizione e velocità delle particelle si è scelto:
+\begin{equation}
+    \mathbf{x} = \big( 0.0\, , \, 1.0\, , \, 0.0 \big) \qquad ; \qquad \mathbf{v} = \big( 1.0\, , \, 0.0\, , \, 0.0 \big).
+\end{equation}
+La soluzione delle equazioni (\ref{eqn:1 edo rotazione}) è la curva:
+\begin{equation}
+    (x,y) = (\sin{(\theta)}\, , \, \cos{(\theta)})
+\end{equation}
+in cui $\theta$ è un parametro, che possiamo interpretare come tempo di simulazione $\theta = t$. La nostra particella, secondo la soluzione dell'equazione del moto segue una traiettoria circolare (in senso orario) nel piano $xy$. Nella figura \ref{fig:1 confronto analitico numerico rotazione} si è verificata la validità dei due metodi utilizzati, confrontando la soluzione numerica con quella analitica nel piano $xy$ al variare del passo $\Delta t$. 
+
+In particolare nella figura \ref{fig:1 confronto analitico numerico rot 1} si sono confrontate le soluzioni, al tempo \texttt{t = 100.0}, per un $\Delta t = 1.0$. Nella figura \ref{fig:1 confronto analitico numerico rot 2} il confronto lo si è fatto per $\Delta t = 0.01$. Il confronto con $\Delta t = 0.1$ mostra già una coincidenza tra le diverse soluzioni, esattamente come nella figura \ref{fig:1 confronto analitico numerico rot 2}.
+\begin{figure}[ht!]
+    \centering
+    \begin{minipage}[ht!]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 1.0$.}
+        \label{fig:1 confronto analitico numerico rot 1}
+    \end{minipage}\hfill
+    \begin{minipage}[ht!]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 0.01$.}
+        \label{fig:1 confronto analitico numerico rot 2}
+    \end{minipage}
+    \caption{Soluzioni numeriche e soluzione esatta a confronto per $\Delta t$ differenti.}
+    \label{fig:1 confronto analitico numerico rotazione}
+\end{figure}
+
+Dalle figura \ref{fig:1 confronto analitico numerico rotazione} è evidente che il metodo di Boris mostra una convergenza più accurata della soluzione, nonostante il minor ordine di convergenza, il quale lo possiamo verificare nella figura \ref{fig:1 test convergenza rot}. Dalla figura del test di convergenza confermiamo quello che ci aspettiamo dalla teoria, ossia che il metodo di Runge-Kutta presenta una convergenza del quarto ordine, mentre l'algoritmo di Boris del secondo.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \caption{Test di convergenza dei due metodi numerici utilizzati a $t = 100.0$.}
+    \label{fig:1 test convergenza rot}
+\end{figure}
+
+Infatti, con un $\Delta t = 1.0$ (figura \ref{fig:1 confronto analitico numerico rot 1}), seppur con qualche difficoltà di convergenza, l'algoritmo di Boris presenta una maggior efficienza rispetto il metodo di Runge-Kutta. Riducendo opportunamente il passo temporale a $\Delta t = 0.01$ per entrambi i metodi si ottiene una convergenza accurata della soluzione (figura \ref{fig:1 confronto analitico numerico rot 2}).
+
+La miglior efficienza è dovuta al fatto che l'algoritmo di Boris è più adatto per problemi fisici in cui la forza dipende esplicitamente dalla velocità. C'è la discussione del metodo di Boris nella sezione \ref{sctn:metodo Boris}.
+
+Nella figura \ref{fig:1 traiettoria 3d rotazione} si può vedere la traiettoria della particella in 3 dimensioni.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \caption{Traiettoria della particella in 3 dimensioni utilizzando l'algoritmo di Boris, a $t = 100.0$ con $\Delta t = 0.01$.}
+    \label{fig:1 traiettoria 3d rotazione}
+\end{figure}
+
+Tuttavia, come sappiamo dalla teoria, nonostante il quarto ordine del metodo di Runge-Kutta esso non preserva le caratteristiche geometriche del problema, al contrario dell'algoritmo di Boris. Infatti se si grafica, si veda la figura \ref{fig:1 confronto energie cinetiche}, l'energia cinetica della particella in funzione del tempo ai diversi timesteps:
+\begin{equation}
+    \Delta t = \left( \frac{T}{60}\, , \, \frac{T}{80}\, , \, \frac{T}{100}\, , \, \frac{T}{200}\, , \, \frac{T}{1000} \right) = \big( 1.66\, , \, 1.25\, , \, 1.0\, , \, 0.5\, , \, 0.1 \big)
+\end{equation}
+si vede che il metodo di Runge-Kutta non preservi l'energia per valori di $\Delta t$ elevati, al contrario dell'algoritmo di Boris.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \caption{Confronto energie cinetiche della particella per $t = ...$.}
+    \label{fig:1 confronto energie cinetiche}
+\end{figure}
+
+
+\subsection{Campo elettrico e magnetico paralleli}
+
+La seconda configurazione studiata è quella in cui i campi elettrico e magnetico sono stati scelti:
+\begin{equation}
+    \mathbf{E} = \big( 0.0\, , \, 0.0\, , \, 0.6 \big) \qquad ; \qquad \mathbf{B} = \big( 0.0\, , \, 0.0\, , \, 1.0 \big)
+\end{equation}
+in cui si è scelto $|\mathbf{E}| < |\mathbb{B}|$ in modo da evitare i casi relativistici, che non sono interesse di questo progetto. L'equazione del moto in componenti (\ref{eqn:1 equazione moto in componenti}) è:
+\begin{align}
+    \dv{v_{x}}{t} &= v_{y}B_{z} \notag \\
+    \dv{v_{y}}{t} &= - v_{x}B_{z} \label{eqn:1 edo parallelo} \\
+    \dv{v_{z}}{t} &= E_z. \notag
+\end{align}
+Come condizioni iniziali su posizione e velocità delle particelle si sono scelte le stesse del caso precedente:
+\begin{equation*}
+    \mathbf{x} = \big( 0.0\, , \, 1.0\, , \, 0.0 \big) \qquad ; \qquad \mathbf{v} = \big( 1.0\, , \, 0.0\, , \, 0.0 \big).
+\end{equation*}
+La soluzione delle equazioni (\ref{eqn:1 edo parallelo}) è la stessa curva sul piano $xy$ del caso precedente:
+\begin{equation}
+    (x,y) = (\sin{(\theta)}\, , \, \cos{(\theta)})
+\end{equation}
+in cui $\theta$ è sempre un parametro interpretabile come tempo di simulazione $\theta = t$, ma ora si ha anche la presenza di un moto accelerato, con $a_z = E_z$, lungo l'asse $z$. Dunque, la nostra particella percorrerà una traiettoria ad elica con passo variabile nel tempo. Si può vedere in figura \ref{fig:1 traiettoria 3d paralleli} la traiettoria della particella nello spazio tridimensionale.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \caption{Traiettoria della particella in 3 dimensioni utilizzando l'algoritmo di Boris, a $t=100.0$ con $\Delta t = 0.01$.}
+    \label{fig:1 traiettoria 3d paralleli}
+\end{figure}
+
+
+\subsection{Campo elettrico e magnetico perpendicolari}
+
+Il terzo caso studiato è la configurazione perpendicolare di campo elettrico e magnetico:
+\begin{equation}
+    \mathbf{E} = \big( 0.0\, , \, 0.6\, , \, 0.0 \big) \qquad ; \qquad \mathbf{B} = \big( 0.0\, , \, 0.0\, , \, 1.0 \big)
+\end{equation}
+sempre con $|\mathbf{E}| < |\mathbb{B}|$. L'equazione del moto in componenti (\ref{eqn:1 equazione moto in componenti}) è:
+\begin{align}
+    \dv{v_{x}}{t} &= v_{y}B_{z} \notag \\
+    \dv{v_{y}}{t} &= E_y - v_{x}B_{z} \label{eqn:1 edo perpendicolare} \\
+    \dv{v_{z}}{t} &= 0. \notag
+\end{align}
+Le condizioni iniziali su posizione e velocità delle particelle sono scelte le stesse dei casi precedenti:
+\begin{equation*}
+    \mathbf{x} = \big( 0.0\, , \, 1.0\, , \, 0.0 \big) \qquad ; \qquad \mathbf{v} = \big( 1.0\, , \, 0.0\, , \, 0.0 \big).
+\end{equation*}
+Le soluzioni dell'equazione del moto (\ref{eqn:1 edo perpendicolare}) saranno sicuramente quelle di un moto solamente sul piano $xy$, visto che l'equazione legata a $v_z$ ci dice che la velocità in quella direzione è costante al suo valore iniziale, ossia $v_z = 0.0$.
+
+
+
+
+
+
+
+\subsection{Configurazione ad X}
 \section{Conclusioni\label{sctn:conclusioni}}
 
 

@@ -23,6 +23,7 @@
 \usepackage{physics}
 \usepackage{changepage}
 \usepackage{siunitx}
+\usepackage{subcaption}
 
 % To fix the problem between physics package and siunitx
 \AtBeginDocument{\RenewCommandCopy\qty\SI}
@@ -30,11 +31,16 @@
 \msg_redirect_name:nnn{siunitx}{physics-pkg}{none}
 \ExplSyntaxOff
 
-%\usepackage{hyperref}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true,
+            linkcolor=blue,
+            filecolor=magenta,
+            urlcolor=cyan,
+            citecolor=magenta}
 % When you want to print the document you can remove the comment from the
 % following commant to hide all the link, but you have to remember to
 % comment the "hypersetup"
-\usepackage[hidelinks]{hyperref}
+%\usepackage[hidelinks]{hyperref}
 
 
 

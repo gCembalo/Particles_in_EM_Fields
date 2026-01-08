@@ -1,10 +1,9 @@
-reset
-
 # plots Particle in EM Field (Rotation)
 
 # --------------------------------------------------------------------------- #
 #                                   Errori                                    #
 # --------------------------------------------------------------------------- #
+reset
 
 # Canva dimensions
 set term qt 1 size 800,600
@@ -39,36 +38,6 @@ plot \
     x2(t), y2(t) w l lw 1.5 lc rgb "blue" title "2nd order", \
     "../data/ERR.dat" using 1:2 w p lw 2 lc rgb "red" title "RK4", \
     x4(t), y4(t) w l lw 1.5 lc rgb "red" title "4th order"
-
-
-# --------------------------------------------------------------------------- #
-#                              Energia cinetica                               #
-# --------------------------------------------------------------------------- #
-reset
-
-# Canva dimensions
-set term qt 2 size 600,400
-set title "Particle in EM Field Rotation ; Energia cinetica"
-set xlabel "t"  font ",14"
-set ylabel "Energia cinetica"  font ",14"
-
-# Setting axis' range
-set xrange[-10:160]
-set yrange[-0.05:0.6]
-
-# Setting log scale
-# set logscale y
-# set logscale x
-
-# Setting grid
-set grid
-
-# Plotting the data
-plot "../data/BORIS.dat" using 1:5 index 0 w l lw 1.0 lc rgb "blue" title "Boris dt = T/60"
-replot "../data/RK4.dat" using 1:5 index 0 w l lw 1.0 lc rgb "red" title "RK4 dt = T/60"
-replot "../data/RK4.dat" using 1:5 index 1 w l lw 1.0 lc rgb "black" title "RK4 dt = T/80"
-replot "../data/RK4.dat" using 1:5 index 2 w l lw 1.0 lc rgb "green" title "RK4 dt = T/100"
-replot "../data/RK4.dat" using 1:5 index 3 w l lw 1.0 lc rgb "orange" title "RK4 dt = T/200"
 
 
 
@@ -113,6 +82,39 @@ reset
 
 # Canva dimensions
 set term qt 4 size 600,400
+set title "Particle in EM Field Rotation ; Orbits 2 ; \Delta t = 0.1" font ",14"
+set xlabel "x"  font ",14"
+set ylabel "y"  font ",14"
+
+# Setting axis' range
+set xrange[-1:1]
+set yrange[-1:1]
+
+# Setting grid
+set grid
+
+# Adding some draw (the X for the multiparticle problem)
+set parametric
+set trange [0:2*pi] # range for the functions
+
+# Lines x,y = solution (parametric form!)
+x(t)  = sin(t)
+y(t)  = cos(t)
+
+# Plotting the data
+plot \
+    x(t), y(t) w l lw 1 lc rgb "black" title "Soluzione esatta", \
+    "../data/BORIS.dat" using 2:3 index 1 w l lw 1 lc rgb "blue" title "Boris", \
+    "../data/RK4.dat" using 2:3 index 1 w l lw 1 lc rgb "red" title "RK4"
+
+unset parametric
+
+
+# -------------------------------- dt = 0.01 -------------------------------- #
+reset
+
+# Canva dimensions
+set term qt 5 size 600,400
 set title "Particle in EM Field Rotation ; Orbits 2 ; \Delta t = 0.01" font ",14"
 set xlabel "x"  font ",14"
 set ylabel "y"  font ",14"
@@ -144,7 +146,7 @@ unset parametric
 reset
 
 # Canva dimensions
-set term qt 5 size 600,400
+set term qt 6 size 600,400
 set title "Particle in EM Field Rotation ; Orbits 3 ; \Delta t = 0.01" font ",14"
 set xlabel "x"  font ",14"
 set ylabel "y"  font ",14"

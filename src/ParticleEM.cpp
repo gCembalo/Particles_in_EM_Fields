@@ -10,14 +10,16 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <ctime>
 #include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-#define STAGE 1      // Choose the problem type (1 to 4)
+#define STAGE 4      // Choose the problem type (1 to 4)
                      // 1,2,3 : single particle
                      // 4     : multiple particles (N_Part)
 #define NMAX_EQ 64   // Maximum number of elements (safety limit)
@@ -67,8 +69,11 @@ int main(){
 
     double t = 0.0;                      // Time variable
     double dt = 0.01;                    // Time step
-    double dt_vec[] = {1.0, 0.1, 0.01, 0.001};  // Vector to change the time step
+    double dt_vec[] = {1.0, 0.1, 0.01};  // Vector to change the time step
     double errRK4 = 0.0 , errBor = 0.0;  // Error variables
+
+    // Uncomment the following vector to use it in the Kinetic energy plot:
+    //double dt_vec[] = {1.66, 1.25, 1.0, 0.5, 0.1};
 
     double YRK4[neq] , YBor[neq]; // Solutions vector (for each method)
                                   // (x, y, z)    = (Y[0], Y[1], Y[2])
@@ -79,18 +84,6 @@ int main(){
                     // (Bx, By, Bz) = (EB[3], EB[4], EB[5])
 
     #if STAGE == 1 || STAGE == 2 || STAGE == 3  // Single particle problem
-
-    // Set the initial condition
-    InitialCondition(YRK4);
-    InitialCondition(YBor);
-
-    // Print the initial condition (t, x, y, z, 0.5 v^2)
-    fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] << "  "
-           << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
-           << endl;
-    fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] << "  "
-           << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
-           << endl;
 
     // Solve the equation with each method with different time step
     // The ElectroMagnetic field will be set inside each method
@@ -103,6 +96,16 @@ int main(){
         InitialCondition(YBor);
 
         t = 0.0;
+
+        // Print the initial condition (t, x, y, z, 0.5 v^2)
+        fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
+               << "  "
+               << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
+               << endl;
+        fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
+               << "  "
+               << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
+               << endl;
 
         // Solve the equation
         for( j = 0 ; t < TL ; j++ ){
@@ -121,6 +124,7 @@ int main(){
                    << "  "
                    << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
                    << endl;
+
         }
 
         fdata1 << endl << endl; // Skip 2 line in the data file
@@ -151,14 +155,14 @@ int main(){
         InitialCondition(YBor);
 
         // Print in the data file (t, x, y, z, 0.5 v^2)
-            fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
-                   << "  "
-                   << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
-                   << endl;
-            fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
-                   << "  "
-                   << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
-                   << endl;
+        fdata1 << t << "  " << YRK4[0] << "  " << YRK4[1] << "  " << YRK4[2] 
+               << "  "
+               << 0.5*(YRK4[3]*YRK4[3] + YRK4[4]*YRK4[4] + YRK4[5]*YRK4[5])
+               << endl;
+        fdata2 << t << "  " << YBor[0] << "  " << YBor[1] << "  " << YBor[2] 
+               << "  "
+               << 0.5*(YBor[3]*YBor[3] + YBor[4]*YBor[4] + YBor[5]*YBor[5])
+               << endl;
         
     }
 
@@ -303,13 +307,13 @@ void EB_Fields(double *Y, double *EB){
 void InitialCondition(double *Y){
 
     #if STAGE == 1 || STAGE == 2 || STAGE == 3 // Single particle problem
-        Y[0] = 0.0 ; Y[1] = 1.0 ; Y[2] = 0.0; // Initial position
-        Y[3] = 1.0 ; Y[4] = 0.0 ; Y[5] = 0.0; // Initial velocity
+        Y[0] = 0.0 ; Y[1] = 1.0 ; Y[2] = 0.0;  // Initial position
+        Y[3] = 1.0 ; Y[4] = 0.0 ; Y[5] = 0.0;  // Initial velocity
 
     #elif STAGE == 4 // Multiple particle problem
         // Initialize random positions and velocities with fixed magnitude.
         double x, y, v, vx, vy, theta;
-        v = 0.1;
+        v = 0.1; // velocity magnitude
 
         // Generating random (x, y) coordinates in the range [-1000, 1000]^2
         x = (drand48()*2.0*X_L) - X_L;
@@ -322,8 +326,8 @@ void InitialCondition(double *Y){
         vy = v*sin(theta);
 
         // Filling the state vector
-        Y[0] = x  ; Y[1] = y  ; Y[2] = 0.0;   // Initial position
-        Y[3] = vx ; Y[4] = vy ; Y[5] = 0.0;   // Initial velocity
+        Y[0] = x  ; Y[1] = y  ; Y[2] = 0.0; // Initial position
+        Y[3] = vx ; Y[4] = vy ; Y[5] = 0.0; // Initial velocity
 
     #endif
 
@@ -379,7 +383,7 @@ void RK4Step(double t, double *Y, double *EB,
     RHSFunc(t, Y, EB, k1); // Computation of k1 using RHS at t_n and Y_n
 
     // Loop to compute Y_n + k1*h/2
-    for(i = 0 ; i < neq ; i++ ){
+    for( i = 0 ; i < neq ; i++ ){
         
         Y1[i] = Y[i] + 0.5*h*k1[i];
 
@@ -389,7 +393,7 @@ void RK4Step(double t, double *Y, double *EB,
                                   // and Y_n + k1*h/2
     
     // Loop to compute Y_{n+1} = Y_n + k2*h/2
-    for(i = 0 ; i < neq ; i++){
+    for( i = 0 ; i < neq ; i++ ){
         
         Y1[i] = Y[i] + h*k2[i]*0.5;
 
@@ -513,6 +517,7 @@ void BorisStep(double t, double *Y, double *EB, double h){
 // Rotation (STAGE 1):                                                        //
 //           Err vs dt          TL = 100                                      //
 //           Kin en vs t        TL = 100                                      //
+//                              different dt vector (see it in the code)      //
 //           Orbit (x,y)        TL = 100                                      //
 //           3D Orbit (x,y)     TL = 100                                      //
 // EM Parallel (STAGE 2):                                                     //
