@@ -59,8 +59,8 @@ set ylabel "y"  font ",14"
 set zlabel "z"  font ",14"
 
 # Setting axis' range
-set xrange[-1:1]
-set yrange[-1:1]
+set xrange[-5:40]
+set yrange[0:1.2]
 set zrange[-1:1]
 
 # Setting grid

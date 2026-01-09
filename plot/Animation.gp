@@ -1,91 +1,65 @@
 # plots Particle in EM Field (Rotation)
 
 # --------------------------------------------------------------------------- #
-#                               RK4 Animation                                 #
+#                                 Animation                                   #
 # --------------------------------------------------------------------------- #
 reset
 
-# ================= TERMINALE =================
-# Live
-set term qt 1 size 1300,600
+# ================= IMPOSTAZIONI TERMINALE =================
+set term qt size 1300,600 noraise
+set samples 500
 
-# GIF (per consegna)
-# set term gif animate delay 5 size 1300,600
-# set output "RK4_vs_BORIS_Xpoint.gif"
-
-# ================= DOMINIO =================
+# ================= DOMINIO E STILE =================
 set xrange [-1000:1000]
 set yrange [-1000:1000]
 set size ratio -1
-
-# ================= COLORI =================
-set cbrange [0:0.5]
-set palette rgb 33,13,10
-set pointsize 0.35
-
 set xlabel "x"
 set ylabel "y"
+set cbrange [0:0.5]
+set palette rgb 33,13,10
+set pointsize 0.8  # Leggermente più grande per visibilità
 
-vmag(vx,vy) = sqrt(vx*vx + vy*vy)
+# ================= CAMPO MAGNETICO (SAFE) =================
+C1 = 2.5e5; C2 = 1.0e5; C3 = -1.0e5; C4 = -2.5e5
+safe_sqrt(v) = (v >= 0) ? sqrt(v) : 1/0
 
-# ================= CAMPO MAGNETICO =================
-# linee: y^2 - x^2 = C
-C1 = 2.5e5
-C2 = 1.0e5
-C3 = -1.0e5
-C4 = -2.5e5
+f1(x) =  sqrt(x*x + C1); f2(x) = -sqrt(x*x + C1)
+f3(x) =  sqrt(x*x + C2); f4(x) = -sqrt(x*x + C2)
+f5(x) =  safe_sqrt(x*x + C3); f6(x) = -safe_sqrt(x*x + C3)
+f7(x) =  safe_sqrt(x*x + C4); f8(x) = -safe_sqrt(x*x + C4)
 
-f1(x) =  sqrt(x*x + C1)
-f2(x) = -sqrt(x*x + C1)
-f3(x) =  sqrt(x*x + C2)
-f4(x) = -sqrt(x*x + C2)
-f5(x) =  sqrt(x*x + C3)
-f6(x) = -sqrt(x*x + C3)
-f7(x) =  sqrt(x*x + C4)
-f8(x) = -sqrt(x*x + C4)
+# Macro per abbreviare il plot delle linee di campo
+FIELD_LINES = "f1(x) w l lc 'gray' dt 2 notitle, f2(x) w l lc 'gray' dt 2 notitle, \
+               f3(x) w l lc 'gray' dt 2 notitle, f4(x) w l lc 'gray' dt 2 notitle, \
+               f5(x) w l lc 'gray' dt 2 notitle, f6(x) w l lc 'gray' dt 2 notitle, \
+               f7(x) w l lc 'gray' dt 2 notitle, f8(x) w l lc 'gray' dt 2 notitle"
 
-# ================= MULTIPLOT =================
-set multiplot layout 1,2 rowsfirst
+vmag(vx,vy,vz) = sqrt(vx*vx + vy*vy + vz*vz)
 
+# ================= LOOP DI ANIMAZIONE =================
 do for [n=0:300] {
+    
+    set multiplot layout 1,2 rowsfirst \
+        title sprintf("{/Bold Particle Motion in X-point Field} - Frame: %d", n)
 
-    # ---------- TITOLO GLOBALE ----------
-    set label 99 sprintf("Particle motion in X-point magnetic field  (step %d)", n) \
-        at screen 0.5,0.97 center font ",14"
+    # ----- RK4 -----
+    set title "RK4 (Explicit 4th Order)"
+    file_rk4 = sprintf("../data/animation/RK4_%04d.dat", n)
+    plot file_rk4 using 1:2:(vmag($3,$4,$5)) with points palette pt 7 notitle, \
+         @FIELD_LINES
 
-    # ---------- RK4 ----------
-    set title "RK4"
-    plot \
-        sprintf("RK4_%04d.dat", n) using 1:2:(vmag($3,$4)) \
-            with points palette notitle, \
-        f1(x) w l lc rgb "black" lw 1 notitle, \
-        f2(x) w l lc rgb "black" lw 1 notitle, \
-        f3(x) w l lc rgb "black" lw 1 notitle, \
-        f4(x) w l lc rgb "black" lw 1 notitle, \
-        f5(x) w l lc rgb "black" lw 1 notitle, \
-        f6(x) w l lc rgb "black" lw 1 notitle, \
-        f7(x) w l lc rgb "black" lw 1 notitle, \
-        f8(x) w l lc rgb "black" lw 1 notitle
+    # ----- BORIS -----
+    set title "Boris Pusher (Semi-implicit)"
+    file_boris = sprintf("../data/animation/BORIS_%04d.dat", n)
+    plot file_boris using 1:2:(vmag($3,$4,$5)) with points palette pt 7 notitle, \
+         @FIELD_LINES
 
-    # ---------- BORIS ----------
-    set title "Boris"
-    plot \
-        sprintf("BORIS_%04d.dat", n) using 1:2:(vmag($3,$4)) \
-            with points palette notitle, \
-        f1(x) w l lc rgb "black" lw 1 notitle, \
-        f2(x) w l lc rgb "black" lw 1 notitle, \
-        f3(x) w l lc rgb "black" lw 1 notitle, \
-        f4(x) w l lc rgb "black" lw 1 notitle, \
-        f5(x) w l lc rgb "black" lw 1 notitle, \
-        f6(x) w l lc rgb "black" lw 1 notitle, \
-        f7(x) w l lc rgb "black" lw 1 notitle, \
-        f8(x) w l lc rgb "black" lw 1 notitle
-
-    unset label 99
+    unset multiplot
+    
+    # Piccolo trucco: se n=0 aspetta un attimo per dare tempo all'utente di guardare
+    if (n==0) { pause 1 }
+    pause 0.02
 }
-
-unset multiplot
-unset output
 
 
 

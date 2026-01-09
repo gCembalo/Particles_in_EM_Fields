@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.1)  9 JAN 2026 15:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.1)  9 JAN 2026 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -745,19 +745,35 @@ Package pdftex.def Info: ../figure/figura1.png  used on input line 274.
 (pdftex.def)             Requested size: 273.14923pt x 182.1069pt.
 
 
-[8] (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+[8]
+
+LaTeX Warning: Reference `ig:1 confronto analitico numerico perp 2' on page 9 undefined on input line 324.
+
+File: ../figure/figura1.png Graphic file (type png)
+<use ../figure/figura1.png>
+Package pdftex.def Info: ../figure/figura1.png  used on input line 331.
+(pdftex.def)             Requested size: 223.07211pt x 148.71808pt.
+File: ../figure/figura1.png Graphic file (type png)
+<use ../figure/figura1.png>
+Package pdftex.def Info: ../figure/figura1.png  used on input line 337.
+(pdftex.def)             Requested size: 223.07211pt x 148.71808pt.
+File: ../figure/figura1.png Graphic file (type png)
+<use ../figure/figura1.png>
+Package pdftex.def Info: ../figure/figura1.png  used on input line 348.
+(pdftex.def)             Requested size: 273.14923pt x 182.1069pt.
+
+
+[9]
+
+[10] (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 338.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 401.
  (../src/ParticleEM.cpp
-
-[9]
-
-[10]
 
 [11]
 
@@ -767,32 +783,40 @@ Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on in
 
 [14]
 
-[15])
+[15]
 
-[16] (./article.aux)
+[16]
+
+[17])
+
+[18] (./article.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `article.out' has not changed.
-(rerunfilecheck)             Checksum: 95D3B9DD123D2B39ADAC4551600E3389;2249.
+(rerunfilecheck)             Checksum: E2A8A0D8E87BD4FA36AB8D37FDF822F6;2250.
 Package logreq Info: Writing requests to 'article.run.xml'.
 \openout1 = `article.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27461 strings out of 473190
- 512172 string characters out of 5715801
- 2208039 words of memory out of 5000000
- 49842 multiletter control sequences out of 15000+600000
+ 27479 strings out of 473190
+ 512662 string characters out of 5715801
+ 2207856 words of memory out of 5000000
+ 49852 multiletter control sequences out of 15000+600000
  573298 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,13n,107p,1290b,2824s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on article.pdf (16 pages, 351987 bytes).
+Output written on article.pdf (18 pages, 357833 bytes).
 PDF statistics:
- 992 PDF objects out of 1000 (max. 8388607)
- 919 compressed objects within 10 object streams
- 600 named destinations out of 1000 (max. 500000)
+ 1016 PDF objects out of 1200 (max. 8388607)
+ 941 compressed objects within 10 object streams
+ 608 named destinations out of 1000 (max. 500000)
  118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -295,13 +295,76 @@ Le condizioni iniziali su posizione e velocità delle particelle sono scelte le 
 \end{equation*}
 Le soluzioni dell'equazione del moto (\ref{eqn:1 edo perpendicolare}) saranno sicuramente quelle di un moto solamente sul piano $xy$, visto che l'equazione legata a $v_z$ ci dice che la velocità in quella direzione è costante al suo valore iniziale, ossia $v_z = 0.0$.
 
+Dalla struttura accoppiata delle equazioni differenziali vediamo che descrivono un moto di una cicloide. Infatti se prendiamo la prima delle (\ref{eqn:1 edo perpendicolare}), la deriviamo nel tempo e la sostituiamo nella seconda otteniamo:
+\begin{equation*}
+    \dv[2]{v_x}{t} + v_x B_z^2 = E_y B_z
+\end{equation*}
+che è l'equazione differenziale di un'oscillatore armonico forzato, dunque di soluzione:
+\begin{equation*}
+    v_x(t) = \frac{E_y}{B_z}\Big[ 1 - \cos{(B_z t)} \Big]
+\end{equation*}
+che se messa dentro l'equazione di $v_y$ e risolvendo l'EDO ci dà:
+\begin{equation*}
+    v_y(t) = \frac{E_y}{B_z}\sin{(B_z t)}.
+\end{equation*}
+Dunque, le equazioni del moto sono:
+\begin{align}
+    \dv{x}{t} &= \frac{E_y}{B_z}\Big[ 1 - \cos{(B_z t)} \Big] \notag \\
+    \dv{y}{t} &= \frac{E_y}{B_z}\sin{(B_z t)} \label{eqn:1 edo perpendicolare cicloide} \\
+    z(t) &= 0 \notag
+\end{align}
+chiamati $R = E_y/B_z$ e $\omega = B_z$, abbiamo le soluzioni:
+\begin{align}
+    x(t) &= R\Big[ \omega t - \sin{(\omega t)} \Big] \notag \\
+    y(t) &= R\Big[ 1 - \cos{(\omega t)} \Big] \label{eqn:1 sol edo perpendicolare cicloide} \\
+    z(t) &= 0 \notag
+\end{align}
+ovvero una cicloide. Già dalle equazioni (\ref{eqn:1 edo perpendicolare}) potevamo vedere che all'istante iniziale, date le condizioni iniziali, l'unica equazione non nulla è la seconda, dunque, inizialmente contribuirà al moto solamente una componente $y$ negativa (visto il segno della differenza $E_y - v_x B_z$) dell'accelerazione, che porterà le particelle a muoversi nel verso negativo dell'asse $y$. Con l'evoluzione temporale la $v_y$ diventa $\neq 0$, dunque si accende anche la componente $x$ dell'accelerazione e si avrà una variazione della velocità anche nella direzione $x$. Però continuando con l'evoluzione si arriverà ad un punto in cui la velocità lungo $x$ diminuirà in modo da rendere l'accelerazione lungo $y$ positiva e quindi invertendo il moto della particella lungo $y$, facendola muovere nel verso positivo. Da queste considerazioni possiamo vedere, come ci confermano le equazioni del moto (\ref{eqn:1 sol edo perpendicolare cicloide}), che abbiamo delle oscillazioni lungo la direzione $y$ ed un moto di deriva lungo $x$ (visto che $v_x$ non inverte mai il segno).
 
+Nella figura \ref{fig:1 confronto analitico numerico perpendicolari} è raffigurato il confronto delle due soluzioni ottenute con i metodi numerici. La figura \ref{fig:1 confronto analitico numerico perp 1} utilizza un $\Delta t = 1.0$, mentre la figura \ref{ig:1 confronto analitico numerico perp 2} un $\Delta t = 0.01$. Come visto nella configurazione di semplice rotazione, per un intervallo temporale alto ($\Delta t = 1.0$) i due algoritmi non riproducono in modo accurato la soluzione, mentre diventano efficienti (e coincidenti) per $\Delta t$ piccoli.
 
+Si può ancora una volta confermare la non conservazione della geometria del sistema da parte del metodo di Runge-Kutta poiché la traiettoria (si veda la figura \ref{fig:1 confronto analitico numerico perp 1}) tende a collassare, mentre quella data da Boris si comorta bene.
+\begin{figure}[ht!]
+    \centering
+    \begin{minipage}[ht!]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 1.0$.}
+        \label{fig:1 confronto analitico numerico perp 1}
+    \end{minipage}\hfill
+    \begin{minipage}[ht!]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 0.01$.}
+        \label{fig:1 confronto analitico numerico perp 2}
+    \end{minipage}
+    \caption{Soluzioni numeriche e soluzione esatta a confronto per $\Delta t$ differenti.}
+    \label{fig:1 confronto analitico numerico perpendicolari}
+\end{figure}
 
-
-
+Come fatto per le altre configurazioni analizzate, in figura \ref{fig:1 traiettoria 3d perpendicolari} è raffigurata la traiettoria in 3 dimensioni.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \caption{Traiettoria della particella in 3 dimensioni utilizzando l'algoritmo di Boris, a $t=100.0$ con $\Delta t = 0.01$.}
+    \label{fig:1 traiettoria 3d perpendicolari}
+\end{figure}
 
 \subsection{Configurazione ad X}
+
+Per quest'ultima configurazione, leggermente semplificata rispetto al caso generale, prendiamo una configurazione del tipo:
+\begin{equation}
+    \mathbf{E} = \big( 0.0\, , \, 0.0\, , \, 0.5 \big) \qquad ; \qquad \mathbf{B} = \left( \frac{y}{1000}\, , \, \frac{x}{1000}\, , \, 0.0 \right)
+\end{equation}
+L'equazione del moto in componenti (\ref{eqn:1 equazione moto in componenti}) è:
+\begin{align}
+    \dv{v_{x}}{t} &= -v_{z}B_{y} \notag \\
+    \dv{v_{y}}{t} &= v_{z}B_{x} \label{eqn:1 edo X} \\
+    \dv{v_{z}}{t} &= E_z. \notag
+\end{align}
+Le condizioni iniziali su posizione e direzione della velocità delle particelle sono state scelte casualmente, ma in modo tale che la velocità avesse modulo pari a $v = 0.1$.
+
+
 \section{Conclusioni\label{sctn:conclusioni}}
 
 

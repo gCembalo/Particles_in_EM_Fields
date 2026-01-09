@@ -10,7 +10,7 @@
 \contentsline {subsection}{\numberline {4.2}Rotazione}{5}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Campo elettrico e magnetico paralleli}{7}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Campo elettrico e magnetico perpendicolari}{8}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Configurazione ad X}{8}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Conclusioni}{8}{section.5}%
-\contentsline {section}{\numberline {A}Inserting Code}{9}{appendix.Alph1}%
-\contentsline {section}{Bibliografia}{16}{section*.8}%
+\contentsline {subsection}{\numberline {4.5}Configurazione ad X}{10}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Conclusioni}{10}{section.5}%
+\contentsline {section}{\numberline {A}Inserting Code}{11}{appendix.Alph1}%
+\contentsline {section}{Bibliografia}{18}{section*.10}%

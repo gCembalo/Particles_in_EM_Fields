@@ -58,5 +58,5 @@ bin_width = 0.1
 bin(x, width) = width * floor(x / width) + width / 2.0
 
 # Plotting the data
-plot "../data/RK4.dat" u (bin($5, bin_width)):(0.1) index 0 smooth frequency with boxes lt 1 lc rgb "#000b61ff" lw 1.5 fs solid 1.0 border lc rgb "blue" title "t = 0 (riscalata x 0.1)", \
-     "../data/RK4.dat" u (bin($5, bin_width)):(1.0) index 1 smooth frequency with boxes lc rgb "purple" title "t = 1000"
+plot "../data/BORIS.dat" u (bin($5, bin_width)):(0.1) index 0 smooth frequency with boxes lt 1 lc rgb "#000b61ff" lw 1.5 fs solid 1.0 border lc rgb "blue" title "t = 0 (riscalata x 0.1)", \
+     "../data/BORIS.dat" u (bin($5, bin_width)):(1.0) index 1 smooth frequency with boxes lc rgb "purple" title "t = 1000"
