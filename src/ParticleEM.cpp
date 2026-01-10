@@ -19,7 +19,7 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-#define STAGE 3      // Choose the problem type (1 to 4)
+#define STAGE 4      // Choose the problem type (1 to 4)
                      // 1,2,3 : single particle
                      // 4     : multiple particles (N_Part)
 #define NMAX_EQ 64   // Maximum number of elements (safety limit)
@@ -27,7 +27,7 @@ using namespace std;
 #define N_Part 10000 // Number of particles in the multi-particle problem
 #define X_L 1000.0   // Boundary half-width along X axis for STAGE 4
 #define Y_L 1000.0   // Boundary half-width along Y axis for STAGE 4
-#define TL 100.0     // Simulation's final time
+#define TL 1500.0     // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //

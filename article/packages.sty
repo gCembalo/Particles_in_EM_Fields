@@ -25,6 +25,15 @@
 \usepackage{siunitx}
 \usepackage{subcaption}
 
+\usepackage{float} % For a better figure placing
+                   % Remember to use the option \begin{figure}[H].
+
+% To define the caption style
+\usepackage[labelfont=bf]{caption}
+
+% To avoid that figure goes in other section's text
+\usepackage[section]{placeins}
+
 % To fix the problem between physics package and siunitx
 \AtBeginDocument{\RenewCommandCopy\qty\SI}
 \ExplSyntaxOn

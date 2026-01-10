@@ -11,6 +11,6 @@
 \contentsline {subsection}{\numberline {4.3}Campo elettrico e magnetico paralleli}{7}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Campo elettrico e magnetico perpendicolari}{8}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Configurazione ad X}{10}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Conclusioni}{10}{section.5}%
-\contentsline {section}{\numberline {A}Inserting Code}{11}{appendix.Alph1}%
-\contentsline {section}{Bibliografia}{18}{section*.10}%
+\contentsline {section}{\numberline {5}Conclusioni}{11}{section.5}%
+\contentsline {section}{\numberline {A}Inserting Code}{13}{appendix.Alph1}%
+\contentsline {section}{Bibliografia}{20}{section*.11}%
