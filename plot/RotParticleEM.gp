@@ -6,10 +6,15 @@
 reset
 
 # Canva dimensions
-set term qt 1 size 800,600
-set title "Particle in EM Field Rotation ; Errori" font ",14"
-set xlabel "dt" font ",14"
-set ylabel "Error"  font ",14"
+set term qt 1 size 600,400
+set title "Errori ; t = 100.0" font ",16"
+set xlabel "dt" font ",16"
+set ylabel "Err"  font ",16"
+
+set key font ",14"
+set key top left
+set key spacing 1.2
+set tics font ",14"
 
 # Setting log scale
 set logscale y
@@ -49,10 +54,15 @@ plot \
 reset
 
 # Canva dimensions
-set term qt 3 size 600,400
-set title "Particle in EM Field Rotation ; Orbits 1 ; \Delta t = 1.0" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set term qt 3 size 600,600
+set title "t = 100.0 ; \Delta t = 1.0" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set key top right
+#set key spacing 1.2
+set tics font ",14"
 
 # Setting axis' range
 set xrange[-1:1]
@@ -72,19 +82,24 @@ y(t)  = cos(t)
 # Plotting the data
 plot \
     x(t), y(t) w l lw 1.5 lc rgb "black" title "Soluzione esatta", \
-    "../data/BORIS.dat" using 2:3 index 0 w l lw 0.5 lc rgb "blue" title "Boris", \
-    "../data/RK4.dat" using 2:3 index 0 w l lw 0.5 lc rgb "red" title "RK4"
+    "../data/BORIS.dat" using 2:3 index 0 w l lw 1.0 lc rgb "blue" title "Boris", \
+    "../data/RK4.dat" using 2:3 index 0 w l lw 1.0 lc rgb "red" title "RK4"
 
 unset parametric
 
-# -------------------------------- dt = 0.01 -------------------------------- #
+# -------------------------------- dt = 0.1 -------------------------------- #
 reset
 
 # Canva dimensions
-set term qt 4 size 600,400
-set title "Particle in EM Field Rotation ; Orbits 2 ; \Delta t = 0.1" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set term qt 4 size 600,600
+set title "t = 100.0 ; \Delta t = 0.1" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set key top right
+#set key spacing 1.2
+set tics font ",14"
 
 # Setting axis' range
 set xrange[-1:1]
@@ -104,8 +119,8 @@ y(t)  = cos(t)
 # Plotting the data
 plot \
     x(t), y(t) w l lw 1 lc rgb "black" title "Soluzione esatta", \
-    "../data/BORIS.dat" using 2:3 index 1 w l lw 1 lc rgb "blue" title "Boris", \
-    "../data/RK4.dat" using 2:3 index 1 w l lw 1 lc rgb "red" title "RK4"
+    "../data/BORIS.dat" using 2:3 index 1 w l lw 1.0 lc rgb "blue" title "Boris", \
+    "../data/RK4.dat" using 2:3 index 1 w l lw 1.0 lc rgb "red" title "RK4"
 
 unset parametric
 
@@ -114,10 +129,15 @@ unset parametric
 reset
 
 # Canva dimensions
-set term qt 5 size 600,400
-set title "Particle in EM Field Rotation ; Orbits 2 ; \Delta t = 0.01" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set term qt 5 size 600,600
+set title "t = 100.0 ; \Delta t = 0.01" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set key top right
+#set key spacing 1.2
+set tics font ",14"
 
 # Setting axis' range
 set xrange[-1:1]
@@ -137,8 +157,8 @@ y(t)  = cos(t)
 # Plotting the data
 plot \
     x(t), y(t) w l lw 1 lc rgb "black" title "Soluzione esatta", \
-    "../data/BORIS.dat" using 2:3 index 2 w l lw 1 lc rgb "blue" title "Boris", \
-    "../data/RK4.dat" using 2:3 index 2 w l lw 1 lc rgb "red" title "RK4"
+    "../data/BORIS.dat" using 2:3 index 2 w l lw 1.0 lc rgb "blue" title "Boris", \
+    "../data/RK4.dat" using 2:3 index 2 w l lw 1.0 lc rgb "red" title "RK4"
 
 unset parametric
 
@@ -147,10 +167,15 @@ reset
 
 # Canva dimensions
 set term qt 6 size 600,400
-set title "Particle in EM Field Rotation ; Orbits 3 ; \Delta t = 0.01" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
-set zlabel "z"  font ",14"
+set title "t = 100.0 ; \Delta t = 0.01" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+set zlabel "z"  font ",16"
+
+set key font ",14"
+set key top left
+set key spacing 1.2
+set tics font ",14"
 
 # Setting axis' range
 set xrange[-1:1]

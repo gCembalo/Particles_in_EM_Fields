@@ -22,7 +22,7 @@ set palette defined ( 0 '#000090',\
 
 unset colorbox
 set colorbox vertical
-set cblabel "Kinetic Energy" font ",14"
+set cblabel "Energia cinetica" font ",16"
 set cbrange [0:10] # Regola in base ai tuoi dati (l'immagine mostra 0-10)
 
 # Palette standard "Rainbow" simile all'immagine
@@ -30,9 +30,12 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 1 size 600,400
-set title "Particles in EM Field ; X configuration ; Boris ; t = 0" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set title "Boris ; t = 0" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set tics font ",14"
 
 # Settiamo axis' range
 set xrange[-1000:1000]
@@ -107,7 +110,7 @@ plot \
 unset parametric
 
 
-# ---------------------------- Boris 3d t = 300.0 ---------------------------- #
+# ---------------------------- Boris 3d t = ---.0 ---------------------------- #
 reset
 
 # Setting the 3d map
@@ -125,7 +128,7 @@ set palette defined ( 0 '#000090',\
 
 unset colorbox
 set colorbox vertical
-set cblabel "Kinetic Energy" font ",14"
+set cblabel "Energia cinetica" font ",16"
 set cbrange [0:10] # Regola in base ai tuoi dati (l'immagine mostra 0-10)
 
 # Palette standard "Rainbow" simile all'immagine
@@ -133,9 +136,12 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 2 size 600,400
-set title "Particles in EM Field ; X configuration ; Boris ; t = 300" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set title "Boris ; t = ---" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set tics font ",14"
 
 # Settiamo axis' range
 set xrange[-1000:1000]
@@ -232,7 +238,7 @@ set palette defined ( 0 '#000090',\
 
 unset colorbox
 set colorbox vertical
-set cblabel "Kinetic Energy" font ",14"
+set cblabel "Energia cinetica" font ",16"
 set cbrange [0:10] # Regola in base ai tuoi dati (l'immagine mostra 0-10)
 
 # Palette standard "Rainbow" simile all'immagine
@@ -240,9 +246,12 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 3 size 600,400
-set title "Particles in EM Field ; X configuration ; RK4 ; t = 0" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set title "RK4 ; t = 0" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set tics font ",14"
 
 # Settiamo axis' range
 set xrange[-1000:1000]
@@ -317,7 +326,7 @@ plot \
 unset parametric
 
 
-# ---------------------------- RK4 3d t = 300.0 ---------------------------- #
+# ---------------------------- RK4 3d t = ---.0 ---------------------------- #
 reset
 
 # Setting the 3d map
@@ -335,7 +344,7 @@ set palette defined ( 0 '#000090',\
 
 unset colorbox
 set colorbox vertical
-set cblabel "Kinetic Energy" font ",14"
+set cblabel "Energia cinetica" font ",16"
 set cbrange [0:10] # Regola in base ai tuoi dati (l'immagine mostra 0-10)
 
 # Palette standard "Rainbow" simile all'immagine
@@ -343,9 +352,12 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 4 size 600,400
-set title "Particles in EM Field ; X configuration ; RK4 ; t = 300" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
+set title "RK4 ; t = ---" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+
+set key font ",14"
+set tics font ",14"
 
 # Settiamo axis' range
 set xrange[-1000:1000]

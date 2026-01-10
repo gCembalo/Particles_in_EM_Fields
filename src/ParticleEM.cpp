@@ -24,10 +24,10 @@ using namespace std;
                      // 4     : multiple particles (N_Part)
 #define NMAX_EQ 64   // Maximum number of elements (safety limit)
                      // to avoid variable-size arrays
-#define N_Part 10000 // Number of particles in the multi-particle problem
+#define N_Part 2000  // Number of particles in the multi-particle problem
 #define X_L 1000.0   // Boundary half-width along X axis for STAGE 4
 #define Y_L 1000.0   // Boundary half-width along Y axis for STAGE 4
-#define TL 1500.0     // Simulation's final time
+#define TL 1000.0     // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //
@@ -74,6 +74,7 @@ int main(){
 
     // Uncomment the following vector to use it in the Kinetic energy plot:
     //double dt_vec[] = {1.66, 1.25, 1.0, 0.5, 0.1};
+    //int n_time = 5;  // Number of different time step
 
     double YRK4[neq] , YBor[neq]; // Solutions vector (for each method)
                                   // (x, y, z)    = (Y[0], Y[1], Y[2])
@@ -517,7 +518,8 @@ void BorisStep(double t, double *Y, double *EB, double h){
 // Rotation (STAGE 1):                                                        //
 //           Err vs dt          TL = 100                                      //
 //           Kin en vs t        TL = 100                                      //
-//                              different dt vector (see it in the code)      //
+//                              different dt vector and n_time int.           //
+//                              (see it in the code)                          //
 //           Orbit (x,y)        TL = 100                                      //
 //           3D Orbit (x,y)     TL = 100                                      //
 // EM Parallel (STAGE 2):                                                     //
@@ -526,8 +528,11 @@ void BorisStep(double t, double *Y, double *EB, double h){
 //           Orbit (x,y)        TL = 100                                      //
 //           3D Orbit (x,y)     TL = 100                                      //
 // X point (STAGE 4):                                                         //
-//           Kin en vs (x,y)    TL      = 0 , 300 , 1000                      //
-//                              N_PART  = 3000                                //
+//           Kin en vs (x,y)    TL      = 0 , 500 , 1000                      //
+//                              N_PART  = 2000                                //
+
+
+
 //           Istogram Kin en    TL      = 1000                                //
 //                              Scaling = 0.1                                 //
 //                              N_PART = 3000                                 //

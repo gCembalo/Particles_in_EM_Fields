@@ -11,10 +11,15 @@ reset
 
 # Canva dimensions
 set term qt 1 size 600,400
-set title "Particle in EM Field (parallel) ; Orbits Boris ; \Delta t = 0.01 ; t = 100.0" font ",14"
-set xlabel "x"  font ",14"
-set ylabel "y"  font ",14"
-set zlabel "z"  font ",14"
+set title "t = 100.0 ; \Delta t = 0.01" font ",16"
+set xlabel "x"  font ",16"
+set ylabel "y"  font ",16"
+set zlabel "z"  font ",16"
+
+set key font ",14"
+set key top right
+set key spacing 1.2
+set tics font ",14"
 
 # Setting axis' range
 set xrange[-1:1]
