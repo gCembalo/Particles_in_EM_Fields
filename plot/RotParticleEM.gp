@@ -7,7 +7,7 @@ reset
 
 # Canva dimensions
 set term qt 1 size 600,400
-set title "Errori ; t = 100.0" font ",16"
+set title "t = 100.0" font ",16"
 set xlabel "dt" font ",16"
 set ylabel "Err"  font ",16"
 

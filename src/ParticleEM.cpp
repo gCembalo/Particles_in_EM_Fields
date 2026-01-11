@@ -274,7 +274,7 @@ int main(){
 ////////////////////////////////////////////////////////////////////////////////
 void EB_Fields(double *Y, double *EB){
 
-    double l = 0.001; // Value of 1/L, where L = X_L = Y_L
+    double l = 0.001; // Value of 1/L, where L = X_L = Y_L = 1000.0
 
     #if STAGE == 1 // Single particle problem
                    // Simple gyration
@@ -283,11 +283,13 @@ void EB_Fields(double *Y, double *EB){
 
     #elif STAGE == 2 // Single particle problem
                      // ExB drift in parallel configuration ( |E| < |B| )
+                     // I choose E_y = 0.6 for estetic reasons.
         EB[0] = 0.0 ; EB[1] = 0.0 ; EB[2] = 0.6;
         EB[3] = 0.0 ; EB[4] = 0.0 ; EB[5] = 1.0;
 
     #elif STAGE == 3 // Single particle problem
                      // ExB drift in perpendicular configuration ( |E| < |B| )
+                     // I choose E_y = 0.6 for estetic reasons.
         EB[0] = 0.0 ; EB[1] = 0.6 ; EB[2] = 0.0;
         EB[3] = 0.0 ; EB[4] = 0.0 ; EB[5] = 1.0;
 

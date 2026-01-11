@@ -30,7 +30,7 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 1 size 600,400
-set title "Boris ; t = 0" font ",16"
+set title "Boris ; N_{Part} = 2000 ; t = 0" font ",16"
 set xlabel "x"  font ",16"
 set ylabel "y"  font ",16"
 
@@ -136,7 +136,7 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 2 size 600,400
-set title "Boris ; t = ---" font ",16"
+set title "Boris ; N_{Part} = 2000 ; t = 1000.0" font ",16"
 set xlabel "x"  font ",16"
 set ylabel "y"  font ",16"
 
@@ -246,7 +246,7 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 3 size 600,400
-set title "RK4 ; t = 0" font ",16"
+set title "RK4 ; N_{Part} = 2000 ; t = 0" font ",16"
 set xlabel "x"  font ",16"
 set ylabel "y"  font ",16"
 
@@ -352,7 +352,7 @@ set palette rgbformulae 33,13,10
 
 # Canva dimensions
 set term qt 4 size 600,400
-set title "RK4 ; t = ---" font ",16"
+set title "RK4 ; N_{Part} = 2000 ; t = 1000.0" font ",16"
 set xlabel "x"  font ",16"
 set ylabel "y"  font ",16"
 

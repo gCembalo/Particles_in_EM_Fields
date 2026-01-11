@@ -200,13 +200,13 @@ In particolare nella figura \ref{fig:1 confronto analitico numerico rot 1} si so
     \centering
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \includegraphics[width=1.\textwidth]{../figure/rotation/NumericVSSolution_1.0.png}
         \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 1.0$.}
         \label{fig:1 confronto analitico numerico rot 1}
     \end{minipage}\hfill
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \includegraphics[width=1.\textwidth]{../figure/rotation/NumericVSSolution_0.01.png}
         \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 0.01$.}
         \label{fig:1 confronto analitico numerico rot 2}
     \end{minipage}
@@ -217,7 +217,7 @@ In particolare nella figura \ref{fig:1 confronto analitico numerico rot 1} si so
 Dalle figura \ref{fig:1 confronto analitico numerico rotazione} è evidente che il metodo di Boris mostra una convergenza più accurata della soluzione, nonostante il minor ordine di convergenza, il quale lo possiamo verificare nella figura \ref{fig:1 test convergenza rot}. Dalla figura del test di convergenza confermiamo quello che ci aspettiamo dalla teoria, ossia che il metodo di Runge-Kutta presenta una convergenza del quarto ordine, mentre l'algoritmo di Boris del secondo.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \includegraphics[width = 0.7\textwidth]{../figure/rotation/ErrorConvergence.png}
     \caption{Test di convergenza dei due metodi numerici utilizzati a $t = 100.0$.}
     \label{fig:1 test convergenza rot}
 \end{figure}
@@ -229,7 +229,7 @@ La miglior efficienza è dovuta al fatto che l'algoritmo di Boris è più adatto
 Nella figura \ref{fig:1 traiettoria 3d rotazione} si può vedere la traiettoria della particella in 3 dimensioni.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \includegraphics[width = 0.7\textwidth]{../figure/rotation/3dOrbit.png}
     \caption{Traiettoria della particella in 3 dimensioni utilizzando l'algoritmo di Boris, a $t = 100.0$ con $\Delta t = 0.01$.}
     \label{fig:1 traiettoria 3d rotazione}
 \end{figure}
@@ -241,8 +241,8 @@ Tuttavia, come sappiamo dalla teoria, nonostante il quarto ordine del metodo di 
 si vede che il metodo di Runge-Kutta non preservi l'energia per valori di $\Delta t$ elevati, al contrario dell'algoritmo di Boris.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
-    \caption{Confronto energie cinetiche della particella per $t = ...$.}
+    \includegraphics[width = 0.7\textwidth]{../figure/rotation/KineticEnergy.png}
+    \caption{Confronto energie cinetiche della particella per $t = 100.0$.}
     \label{fig:1 confronto energie cinetiche}
 \end{figure}
 
@@ -270,7 +270,7 @@ La soluzione delle equazioni (\ref{eqn:1 edo parallelo}) è la stessa curva sul 
 in cui $\theta$ è sempre un parametro interpretabile come tempo di simulazione $\theta = t$, ma ora si ha anche la presenza di un moto accelerato, con $a_z = E_z$, lungo l'asse $z$. Dunque, la nostra particella percorrerà una traiettoria ad elica con passo variabile nel tempo. Si può vedere in figura \ref{fig:1 traiettoria 3d paralleli} la traiettoria della particella nello spazio tridimensionale.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \includegraphics[width = 0.7\textwidth]{../figure/parallel/3dOrbit.png}
     \caption{Traiettoria della particella in 3 dimensioni utilizzando l'algoritmo di Boris, a $t=100.0$ con $\Delta t = 0.01$.}
     \label{fig:1 traiettoria 3d paralleli}
 \end{figure}
@@ -327,13 +327,13 @@ Si può ancora una volta confermare la non conservazione della geometria del sis
     \centering
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \includegraphics[width=1.\textwidth]{../figure/perpendicular/NumericVSSolution_1.0.png}
         \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 1.0$.}
         \label{fig:1 confronto analitico numerico perp 1}
     \end{minipage}\hfill
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \includegraphics[width=1.\textwidth]{../figure/perpendicular/NumericVSSolution_0.01.png}
         \subcaption{Soluzioni numeriche e soluzione esatta a confronto per un $\Delta t = 0.01$.}
         \label{fig:1 confronto analitico numerico perp 2}
     \end{minipage}
@@ -344,7 +344,7 @@ Si può ancora una volta confermare la non conservazione della geometria del sis
 Come fatto per le altre configurazioni analizzate, in figura \ref{fig:1 traiettoria 3d perpendicolari} è raffigurata la traiettoria in 3 dimensioni.
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.6\textwidth]{../figure/figura1.png}
+    \includegraphics[width = 0.7\textwidth]{../figure/perpendicular/3dOrbit.png}
     \caption{Traiettoria della particella in 3 dimensioni utilizzando l'algoritmo di Boris, a $t=100.0$ con $\Delta t = 0.01$.}
     \label{fig:1 traiettoria 3d perpendicolari}
 \end{figure}
@@ -352,7 +352,7 @@ Come fatto per le altre configurazioni analizzate, in figura \ref{fig:1 traietto
 
 \subsection{Configurazione ad X}
 
-Per quest'ultima configurazione, leggermente semplificata rispetto al caso generale, prendiamo una configurazione a molte particelle non interagenti. Utilizziamo $3000$ particelle (\texttt{N\_Part = 3000}) che posizioniamo in modo randomico nel piano $xy$ in un dominio quadrato $[-1000,1000]^2$. La configurazione del campo elettrico e magnetico si è scelta del tipo:
+Per quest'ultima configurazione, leggermente semplificata rispetto al caso generale, prendiamo una configurazione a molte particelle non interagenti. Utilizziamo $2000$ particelle (\texttt{N\_Part = 2000}) che posizioniamo in modo randomico nel piano $xy$ in un dominio quadrato $[-1000,1000]^2$. La configurazione del campo elettrico e magnetico si è scelta del tipo:
 \begin{equation}
     \mathbf{E} = \big( 0.0\, , \, 0.0\, , \, 0.5 \big) \qquad ; \qquad \mathbf{B} = \left( \frac{y}{1000}\, , \, \frac{x}{1000}\, , \, 0.0 \right)
 \end{equation}
@@ -365,31 +365,43 @@ L'equazione del moto in componenti (\ref{eqn:1 equazione moto in componenti}) è
 Le condizioni iniziali sulla velocità delle particelle sono state scelte con una direzione randomica nello spazio, ma in modo tale che avesse modulo pari a $v = 0.1$.
 
 Mentre il campo elettrico è costante lungo l'asse $z$, le linee di campo magnetico sono delle iperboli, che riproducono un X point (da cui il nome), nel piano $xy$. Le linee di campo sono rappresentate nella figura \ref{fig:1 confronto analitico numerico X point}, insieme ai risultati per le posizioni $x$, $y$ (all'interno del dominio iniziale $[-1000,1000]$) e la loro energia cinetica per istanti di tempo differenti. Dai plot si vede, tramite l'aumento dell'energia cinetica nel tempo, l'azione accelerante dei campi. Le particelle durante la loro evoluzione temporale tendono a posizionarsi lungo la linea di campo magnetico (iperbole).
-\begin{figure}[H]
+\begin{figure}[ht!]
     \centering
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \includegraphics[width=1.\textwidth]{../figure/X_point/RK4_xyVSKinEnergy_0.png}
         \subcaption{Risultati del metodo RK4 a $t = 0$ per un $\Delta t = 0.01$.}
         \label{fig:1 confronto analitico numerico X RK4 1}
     \end{minipage}\hfill
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
-        \subcaption{Risultati del metodo RK4 a $t = 500$ per un $\Delta t = 0.01$.}
-        \label{fig:1 confronto analitico numerico X RK4 2}
+        \includegraphics[width=1.\textwidth]{../figure/X_point/BORIS_xyVSKinEnergy_0.png}
+        \subcaption{Risultati del metodo Boris a $t = 0$ per un $\Delta t = 0.01$.}
+        \label{fig:1 confronto analitico numerico X Boris 1}
     \end{minipage} \\
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
-        \subcaption{Risultati del metodo Boris a $t = 0$ per un $\Delta t = 0.01$.}
-        \label{fig:1 confronto analitico numerico X Boris 1}
+        \includegraphics[width=1.\textwidth]{../figure/X_point/RK4_xyVSKinEnergy_500.png}
+        \subcaption{Risultati del metodo RK4 a $t = 500$ per un $\Delta t = 0.01$.}
+        \label{fig:1 confronto analitico numerico X RK4 2}
     \end{minipage}\hfill
     \begin{minipage}[ht!]{0.49\textwidth}
         \centering
-        \includegraphics[width=1.\textwidth]{../figure/figura1.png}
+        \includegraphics[width=1.\textwidth]{../figure/X_point/BORIS_xyVSKinEnergy_500.png}
         \subcaption{Risultati del metodo Boris a $t = 500$ per un $\Delta t = 0.01$.}
         \label{fig:1 confronto analitico numerico X Boris 2}
+    \end{minipage} \\
+    \begin{minipage}[ht!]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../figure/X_point/RK4_xyVSKinEnergy_1000.png}
+        \subcaption{Risultati del metodo RK4 a $t = 1000$ per un $\Delta t = 0.01$.}
+        \label{fig:1 confronto analitico numerico X RK4 3}
+    \end{minipage}\hfill
+    \begin{minipage}[ht!]{0.49\textwidth}
+        \centering
+        \includegraphics[width=1.\textwidth]{../figure/X_point/BORIS_xyVSKinEnergy_1000.png}
+        \subcaption{Risultati del metodo Boris a $t = 1000$ per un $\Delta t = 0.01$.}
+        \label{fig:1 confronto analitico numerico X Boris 3}
     \end{minipage}
     \caption{Soluzioni numeriche per $t$ e $\Delta t$ differenti.}
     \label{fig:1 confronto analitico numerico X point}

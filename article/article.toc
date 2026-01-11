@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {4}Risultati nelle diverse configurazioni}{4}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Implementazione codice}{4}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Rotazione}{5}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Campo elettrico e magnetico paralleli}{7}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.3}Campo elettrico e magnetico paralleli}{8}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Campo elettrico e magnetico perpendicolari}{8}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Configurazione ad X}{10}{subsection.4.5}%
 \contentsline {section}{\numberline {5}Conclusioni}{11}{section.5}%
