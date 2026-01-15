@@ -4,7 +4,7 @@
 //              Project : Particle(s) in Electromagnetic Fields               //
 //                                                                            //
 //              Starting date : 24-12-2025                                    //
-//              Ending date   : ..-..-2026                                    //
+//              Ending date   : 15-01-2026                                    //
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -19,7 +19,7 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-#define STAGE 4      // Choose the problem type (1 to 4)
+#define STAGE 1      // Choose the problem type (1 to 4)
                      // 1,2,3 : single particle
                      // 4     : multiple particles (N_Part)
 #define NMAX_EQ 64   // Maximum number of elements (safety limit)
@@ -27,7 +27,7 @@ using namespace std;
 #define N_Part 2000  // Number of particles in the multi-particle problem
 #define X_L 1000.0   // Boundary half-width along X axis for STAGE 4
 #define Y_L 1000.0   // Boundary half-width along Y axis for STAGE 4
-#define TL 1000.0     // Simulation's final time
+#define TL 100.0     // Simulation's final time
 
 ////////////////////////////////////////////////////////////////////////////////
 //                          Functions declaration                             //
@@ -74,7 +74,7 @@ int main(){
 
     // Uncomment the following vector to use it in the Kinetic energy plot:
     //double dt_vec[] = {1.66, 1.25, 1.0, 0.5, 0.1};
-    //int n_time = 5;  // Number of different time step
+    //int n_time = 5; // Number of different time step in the Kinetic energy plot
 
     double YRK4[neq] , YBor[neq]; // Solutions vector (for each method)
                                   // (x, y, z)    = (Y[0], Y[1], Y[2])
@@ -351,7 +351,7 @@ void RHSFunc(double t, double *Y, double *EB, double *R){
     EB_Fields(Y, EB); // Fill the EB vector
 
     // Assigning variables
-    double x = Y[0]   , y = Y[1]   , z = Y[2];
+    double x  = Y[0]  , y  = Y[1]  , z  = Y[2];
     double vx = Y[3]  , vy = Y[4]  , vz = Y[5];
     double Ex = EB[0] , Ey = EB[1] , Ez = EB[2];
     double Bx = EB[3] , By = EB[4] , Bz = EB[5];
@@ -398,7 +398,7 @@ void RK4Step(double t, double *Y, double *EB,
     // Loop to compute Y_{n+1} = Y_n + k2*h/2
     for( i = 0 ; i < neq ; i++ ){
         
-        Y1[i] = Y[i] + h*k2[i]*0.5;
+        Y1[i] = Y[i] + 0.5*h*k2[i];
 
     }
 
@@ -418,7 +418,7 @@ void RK4Step(double t, double *Y, double *EB,
     // Loop to compute Y_{n+1} = Y_n + h/6 * ( k1 + 2*k2 + 2*k3 + k4 )
     for(i = 0 ; i < neq ; i++){
         
-        Y[i] += h * ( k1[i] + 2.0*k2[i] + 2.0*k3[i] + k4[i] )/6.0;
+        Y[i] += h * ( k1[i] + 2.0*k2[i] + 2.0*k3[i] + k4[i] ) / 6.0;
 
     }
 
@@ -512,32 +512,3 @@ void BorisStep(double t, double *Y, double *EB, double h){
     }
 
 }
-
-////////////////////////////////////////////////////////////////////////////////
-//                             Plot parameter                                 //
-////////////////////////////////////////////////////////////////////////////////
-// I list the parameter I've used to plot the data (for each configuration).  //
-// Rotation (STAGE 1):                                                        //
-//           Err vs dt          TL = 100                                      //
-//           Kin en vs t        TL = 100                                      //
-//                              different dt vector and n_time int.           //
-//                              (see it in the code)                          //
-//           Orbit (x,y)        TL = 100                                      //
-//           3D Orbit (x,y)     TL = 100                                      //
-// EM Parallel (STAGE 2):                                                     //
-//           3D Orbit (x,y)     TL = 100                                      //
-// EM Perpendicular (STAGE 3):                                                //
-//           Orbit (x,y)        TL = 100                                      //
-//           3D Orbit (x,y)     TL = 100                                      //
-// X point (STAGE 4):                                                         //
-//           Kin en vs (x,y)    TL      = 0 , 500 , 1000                      //
-//                              N_PART  = 2000                                //
-
-
-
-//           Istogram Kin en    TL      = 1000                                //
-//                              Scaling = 0.1                                 //
-//                              N_PART = 3000                                 //
-//           Power law          TL     = 1000                                 //
-//                              N_PART = 10000                                //
-////////////////////////////////////////////////////////////////////////////////

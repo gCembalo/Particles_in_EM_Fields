@@ -10,19 +10,6 @@ The project is developed in the context of computational physics / astrophysics 
 
 ---
 
-## Project Structure
-```text
-.
-├── article/        # Article (.tex) file
-├── data/           # Output data
-├── figures/        # Generated plots and figures
-├── references/     # References for the project
-├── src/            # Source code
-└── README.md
-```
-
----
-
 ## Physical Model
 The equation of motion for each particle is:
 
@@ -58,8 +45,36 @@ The project involves the numerical integration of the equations of motion using:
 ---
 
 ## Features
-- Simulation of single or multiple charged particles
-- Support for 3D particle trajectories
-- Visualization of particle motion and velocity magnitude
-- Comparison between different numerical integrators
-- Analysis of numerical stability and energy conservation
+- Simulation of single or multiple charged particles.
+- Support for 3D particle trajectories.
+- Visualization of particle motion and velocity magnitude.
+- Comparison between different numerical integrators.
+- Analysis of numerical stability and energy conservation.
+
+---
+
+## Project Structure
+```text
+.
+├── article/        # Article (.tex) file
+├── data/           # Output data
+├── figures/        # Generated plots and figures
+├── references/     # References for the project
+├── src/            # Source code
+├── LICENSE
+└── README.md
+```
+
+---
+
+## Usage
+
+The main C++ source file is located in `src/ParticleEM.cpp`. You can select the desired electromagnetic field configuration by modifying the `STATUS` macro.
+
+Plot parameters are defined in the `plot/PlotParameter.cpp` file. To reproduce one of the figures from the article, open `gnuplot` and run the corresponding `.gp` configuration file.
+
+---
+
+## License
+
+This project is distributed under the terms of the license specified in the `LICENSE` file.

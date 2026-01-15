@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.1)  11 JAN 2026 09:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.1)  15 JAN 2026 16:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -718,15 +718,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [3]
 
 [4]
-<../figure/rotation/NumericVSSolution_1.0.png, id=140, 600.2425pt x 602.25pt>
+<../figure/rotation/NumericVSSolution_1.0.png, id=141, 597.23125pt x 600.2425pt>
 File: ../figure/rotation/NumericVSSolution_1.0.png Graphic file (type png)
 <use ../figure/rotation/NumericVSSolution_1.0.png>
-Package pdftex.def Info: ../figure/rotation/NumericVSSolution_1.0.png  used on input line 203.
-(pdftex.def)             Requested size: 223.07211pt x 223.81229pt.
-<../figure/rotation/NumericVSSolution_0.01.png, id=142, 599.23875pt x 601.24625pt>
+Package pdftex.def Info: ../figure/rotation/NumericVSSolution_1.0.png  used on input line 204.
+(pdftex.def)             Requested size: 223.07211pt x 224.1928pt.
+<../figure/rotation/NumericVSSolution_0.01.png, id=143, 599.23875pt x 601.24625pt>
 File: ../figure/rotation/NumericVSSolution_0.01.png Graphic file (type png)
 <use ../figure/rotation/NumericVSSolution_0.01.png>
-Package pdftex.def Info: ../figure/rotation/NumericVSSolution_0.01.png  used on input line 209.
+Package pdftex.def Info: ../figure/rotation/NumericVSSolution_0.01.png  used on input line 210.
 (pdftex.def)             Requested size: 223.07211pt x 223.81541pt.
 
 
@@ -734,82 +734,81 @@ Package pdftex.def Info: ../figure/rotation/NumericVSSolution_0.01.png  used on 
 <../figure/rotation/ErrorConvergence.png, id=157, 599.23875pt x 399.4925pt>
 File: ../figure/rotation/ErrorConvergence.png Graphic file (type png)
 <use ../figure/rotation/ErrorConvergence.png>
-Package pdftex.def Info: ../figure/rotation/ErrorConvergence.png  used on input line 220.
+Package pdftex.def Info: ../figure/rotation/ErrorConvergence.png  used on input line 221.
 (pdftex.def)             Requested size: 318.66948pt x 212.44931pt.
-<../figure/rotation/3dOrbit.png, id=162, 596.2275pt x 397.485pt>
-File: ../figure/rotation/3dOrbit.png Graphic file (type png)
-<use ../figure/rotation/3dOrbit.png>
-Package pdftex.def Info: ../figure/rotation/3dOrbit.png  used on input line 232.
-(pdftex.def)             Requested size: 318.66948pt x 212.44312pt.
 
 
 [6 <../figure/rotation/NumericVSSolution_1.0.png> <../figure/rotation/NumericVSSolution_0.01.png> <../figure/rotation/ErrorConvergence.png>]
+<../figure/rotation/3dOrbit.png, id=173, 596.2275pt x 397.485pt>
+File: ../figure/rotation/3dOrbit.png Graphic file (type png)
+<use ../figure/rotation/3dOrbit.png>
+Package pdftex.def Info: ../figure/rotation/3dOrbit.png  used on input line 233.
+(pdftex.def)             Requested size: 318.66948pt x 212.44312pt.
 <../figure/rotation/KineticEnergy.png, id=175, 601.24625pt x 401.5pt>
 File: ../figure/rotation/KineticEnergy.png Graphic file (type png)
 <use ../figure/rotation/KineticEnergy.png>
-Package pdftex.def Info: ../figure/rotation/KineticEnergy.png  used on input line 244.
+Package pdftex.def Info: ../figure/rotation/KineticEnergy.png  used on input line 245.
 (pdftex.def)             Requested size: 318.66948pt x 212.80623pt.
 
 
-[7 <../figure/rotation/3dOrbit.png> <../figure/rotation/KineticEnergy.png>]
-<../figure/parallel/3dOrbit.png, id=189, 601.24625pt x 396.48125pt>
+[7 <../figure/rotation/3dOrbit.png>]
+<../figure/parallel/3dOrbit.png, id=190, 601.24625pt x 396.48125pt>
 File: ../figure/parallel/3dOrbit.png Graphic file (type png)
 <use ../figure/parallel/3dOrbit.png>
-Package pdftex.def Info: ../figure/parallel/3dOrbit.png  used on input line 273.
+Package pdftex.def Info: ../figure/parallel/3dOrbit.png  used on input line 274.
 (pdftex.def)             Requested size: 318.66948pt x 210.14615pt.
 
 
-[8 <../figure/parallel/3dOrbit.png>]
-<../figure/perpendicular/NumericVSSolution_1.0.png, id=210, 601.24625pt x 401.5pt>
-File: ../figure/perpendicular/NumericVSSolution_1.0.png Graphic file (type png)
-<use ../figure/perpendicular/NumericVSSolution_1.0.png>
-Package pdftex.def Info: ../figure/perpendicular/NumericVSSolution_1.0.png  used on input line 330.
-(pdftex.def)             Requested size: 223.07211pt x 148.96313pt.
-<../figure/perpendicular/NumericVSSolution_0.01.png, id=211, 599.23875pt x 399.4925pt>
-File: ../figure/perpendicular/NumericVSSolution_0.01.png Graphic file (type png)
-<use ../figure/perpendicular/NumericVSSolution_0.01.png>
-Package pdftex.def Info: ../figure/perpendicular/NumericVSSolution_0.01.png  used on input line 336.
-(pdftex.def)             Requested size: 223.07211pt x 148.71208pt.
-
+[8 <../figure/rotation/KineticEnergy.png> <../figure/parallel/3dOrbit.png>]
 
 [9]
-<../figure/perpendicular/3dOrbit.png, id=221, 593.21625pt x 393.47pt>
+<../figure/perpendicular/NumericVSSolution_1.0.png, id=216, 601.24625pt x 401.5pt>
+File: ../figure/perpendicular/NumericVSSolution_1.0.png Graphic file (type png)
+<use ../figure/perpendicular/NumericVSSolution_1.0.png>
+Package pdftex.def Info: ../figure/perpendicular/NumericVSSolution_1.0.png  used on input line 333.
+(pdftex.def)             Requested size: 223.07211pt x 148.96313pt.
+<../figure/perpendicular/NumericVSSolution_0.01.png, id=217, 599.23875pt x 399.4925pt>
+File: ../figure/perpendicular/NumericVSSolution_0.01.png Graphic file (type png)
+<use ../figure/perpendicular/NumericVSSolution_0.01.png>
+Package pdftex.def Info: ../figure/perpendicular/NumericVSSolution_0.01.png  used on input line 339.
+(pdftex.def)             Requested size: 223.07211pt x 148.71208pt.
+<../figure/perpendicular/3dOrbit.png, id=219, 593.21625pt x 393.47pt>
 File: ../figure/perpendicular/3dOrbit.png Graphic file (type png)
 <use ../figure/perpendicular/3dOrbit.png>
-Package pdftex.def Info: ../figure/perpendicular/3dOrbit.png  used on input line 347.
+Package pdftex.def Info: ../figure/perpendicular/3dOrbit.png  used on input line 350.
 (pdftex.def)             Requested size: 318.66948pt x 211.37192pt.
 
 
 [10 <../figure/perpendicular/NumericVSSolution_1.0.png> <../figure/perpendicular/NumericVSSolution_0.01.png> <../figure/perpendicular/3dOrbit.png>]
-<../figure/X_point/RK4_xyVSKinEnergy_0.png, id=233, 599.23875pt x 400.49625pt>
+<../figure/X_point/RK4_xyVSKinEnergy_0.png, id=231, 599.23875pt x 400.49625pt>
 File: ../figure/X_point/RK4_xyVSKinEnergy_0.png Graphic file (type png)
 <use ../figure/X_point/RK4_xyVSKinEnergy_0.png>
-Package pdftex.def Info: ../figure/X_point/RK4_xyVSKinEnergy_0.png  used on input line 372.
+Package pdftex.def Info: ../figure/X_point/RK4_xyVSKinEnergy_0.png  used on input line 377.
 (pdftex.def)             Requested size: 223.07211pt x 149.08572pt.
-<../figure/X_point/BORIS_xyVSKinEnergy_0.png, id=234, 601.24625pt x 401.5pt>
+<../figure/X_point/BORIS_xyVSKinEnergy_0.png, id=232, 601.24625pt x 401.5pt>
 File: ../figure/X_point/BORIS_xyVSKinEnergy_0.png Graphic file (type png)
 <use ../figure/X_point/BORIS_xyVSKinEnergy_0.png>
-Package pdftex.def Info: ../figure/X_point/BORIS_xyVSKinEnergy_0.png  used on input line 378.
+Package pdftex.def Info: ../figure/X_point/BORIS_xyVSKinEnergy_0.png  used on input line 383.
 (pdftex.def)             Requested size: 223.07211pt x 148.96313pt.
-<../figure/X_point/RK4_xyVSKinEnergy_500.png, id=235, 601.24625pt x 400.49625pt>
+<../figure/X_point/RK4_xyVSKinEnergy_500.png, id=233, 601.24625pt x 400.49625pt>
 File: ../figure/X_point/RK4_xyVSKinEnergy_500.png Graphic file (type png)
 <use ../figure/X_point/RK4_xyVSKinEnergy_500.png>
-Package pdftex.def Info: ../figure/X_point/RK4_xyVSKinEnergy_500.png  used on input line 384.
+Package pdftex.def Info: ../figure/X_point/RK4_xyVSKinEnergy_500.png  used on input line 389.
 (pdftex.def)             Requested size: 223.07211pt x 148.59073pt.
-<../figure/X_point/BORIS_xyVSKinEnergy_500.png, id=236, 601.24625pt x 400.49625pt>
+<../figure/X_point/BORIS_xyVSKinEnergy_500.png, id=234, 601.24625pt x 400.49625pt>
 File: ../figure/X_point/BORIS_xyVSKinEnergy_500.png Graphic file (type png)
 <use ../figure/X_point/BORIS_xyVSKinEnergy_500.png>
-Package pdftex.def Info: ../figure/X_point/BORIS_xyVSKinEnergy_500.png  used on input line 390.
+Package pdftex.def Info: ../figure/X_point/BORIS_xyVSKinEnergy_500.png  used on input line 395.
 (pdftex.def)             Requested size: 223.07211pt x 148.59073pt.
-<../figure/X_point/RK4_xyVSKinEnergy_1000.png, id=237, 601.24625pt x 401.5pt>
+<../figure/X_point/RK4_xyVSKinEnergy_1000.png, id=235, 601.24625pt x 401.5pt>
 File: ../figure/X_point/RK4_xyVSKinEnergy_1000.png Graphic file (type png)
 <use ../figure/X_point/RK4_xyVSKinEnergy_1000.png>
-Package pdftex.def Info: ../figure/X_point/RK4_xyVSKinEnergy_1000.png  used on input line 396.
+Package pdftex.def Info: ../figure/X_point/RK4_xyVSKinEnergy_1000.png  used on input line 401.
 (pdftex.def)             Requested size: 223.07211pt x 148.96313pt.
-<../figure/X_point/BORIS_xyVSKinEnergy_1000.png, id=238, 597.23125pt x 400.49625pt>
+<../figure/X_point/BORIS_xyVSKinEnergy_1000.png, id=236, 597.23125pt x 400.49625pt>
 File: ../figure/X_point/BORIS_xyVSKinEnergy_1000.png Graphic file (type png)
 <use ../figure/X_point/BORIS_xyVSKinEnergy_1000.png>
-Package pdftex.def Info: ../figure/X_point/BORIS_xyVSKinEnergy_1000.png  used on input line 402.
+Package pdftex.def Info: ../figure/X_point/BORIS_xyVSKinEnergy_1000.png  used on input line 407.
 (pdftex.def)             Requested size: 223.07211pt x 149.58684pt.
 
 
@@ -822,7 +821,7 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 450.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 455.
  (../src/ParticleEM.cpp
 
 [13
@@ -841,9 +840,7 @@ Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on in
 
 [19])
 
-[20]
-
-[21] (./article.aux)
+[20] (./article.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -855,18 +852,18 @@ Package logreq Info: Writing requests to 'article.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 27657 strings out of 473190
- 519166 string characters out of 5715801
- 2275411 words of memory out of 5000000
- 50015 multiletter control sequences out of 15000+600000
+ 27628 strings out of 473190
+ 518711 string characters out of 5715801
+ 2073450 words of memory out of 5000000
+ 50016 multiletter control sequences out of 15000+600000
  573298 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,13n,107p,1290b,2824s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on article.pdf (21 pages, 2004982 bytes).
+ 94i,13n,107p,1332b,2824s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on article.pdf (20 pages, 1999114 bytes).
 PDF statistics:
- 1077 PDF objects out of 1200 (max. 8388607)
- 968 compressed objects within 10 object streams
- 619 named destinations out of 1000 (max. 500000)
+ 1033 PDF objects out of 1200 (max. 8388607)
+ 927 compressed objects within 10 object streams
+ 589 named destinations out of 1000 (max. 500000)
  188 words of extra memory for PDF output out of 10000 (max. 10000000)
 
