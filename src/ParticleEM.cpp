@@ -19,7 +19,7 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //                            Macro declaration                               //
 ////////////////////////////////////////////////////////////////////////////////
-#define STAGE 1      // Choose the problem type (1 to 4)
+#define STAGE 4      // Choose the problem type (1 to 4)
                      // 1,2,3 : single particle
                      // 4     : multiple particles (N_Part)
 #define NMAX_EQ 64   // Maximum number of elements (safety limit)
